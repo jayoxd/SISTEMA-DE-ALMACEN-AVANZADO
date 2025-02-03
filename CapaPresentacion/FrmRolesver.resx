@@ -117,13 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Btnoinahbilitados.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAS8AAAAzCAYAAADGvY6MAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKfSURBVHhe7d3BSxRhGMfx/sBAW8zNFqVFzXUFyfBgQSFC
+        4SEvdQmiU0idomOHIOyyFy95qYOnZt/BdSUG2q12TZ/2mRkXdd+8rb0PfH/wOci8jrcv7qy4V4QxxgyO
+        eDHGTI54McZMjngxxkyOeDHGTI54McZM7sJ4HXe60t6qSXN1Q/YWH0hcqkp0dQoAhkIbo63Zv7curQ+f
+        5KjVzms0uH/G69f2Z3ET8+LG57w/BACGyV2/Le5GRX68/5hX6ewG4qWlO3j0VFyx4r0hAFwmbVFjeU3+
+        fE/ySmU7Ey8NV1xekmi07L0JAPwfk7023ZHDRjOv1bl46W9chAtAqPR52Mn68UqfcfFSEUDA3NisJJtv
+        02al8dJ3FfXhvO8wAIREW9WN4ixe+pakPtn3HQSAoIzckuTFZhYv/ZsK7yEACFA8fTeLVzy1KN88BwAg
+        RPWRchavemHGewAAQpXGy3cBAEJGvACYRLwAmES8AJhEvACYRLwAmES8AJhEvACYRLwAmES8AJhEvACY
+        RLwAmES8AJhEvACYRLwAmES8AJhEvACYRLwAmJTGS/8ftO8iAIQqjVdcqnovAkCo0ng1ltd6X0wOXASA
+        0OgnneknnqXxSt68E3dt2nsQAEJzsP4si9dhoymuWPEeAoCQaKt+1razeOmSl6/Fjc16DwNAEEbL0nz4
+        JG1WP17Hna7sLdz3fwMABCAuLchRq502qx8vXTeKxd2s8tH/AILjJqrye+dLXqtz8dJ1vu5KXF6SqMAD
+        fAAB6L1U1N+4TodLNxAvnb6ETJ6/Elec998MAC6BG5+T/ZXH/ZeKp+eN18m0dPqWpN7Ad2MAGIZ6YUaa
+        qxvS3qrlNRrchfFijLFQR7wYYyZHvBhjJke8GGMmR7wYYwYn8hfQ5UqFjocqSQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="EDITAR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ELIMINAR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bunifuImageButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAJS5JREFUeF7t
@@ -465,6 +479,6 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>108</value>
+    <value>46</value>
   </metadata>
 </root>

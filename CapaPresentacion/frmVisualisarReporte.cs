@@ -13,8 +13,7 @@ namespace CapaPresentacion
 {
     public partial class frmVisualisarReporte : Form
     {
-        N_ReporteDiagnostico objNegocio = new N_ReporteDiagnostico();
-        E_ReporteDiagnostico entidad  = new E_ReporteDiagnostico();
+      
         public frmVisualisarReporte()
         {
             InitializeComponent();
@@ -25,8 +24,6 @@ namespace CapaPresentacion
         public void mostrarDiagnostico()
         {
 
-            N_ReporteDiagnostico objNegocio = new N_ReporteDiagnostico();
-            tablaReporte.DataSource = objNegocio.listandoReportDiagnotic();
             //lblDiagnosticos.Text = Convert.ToString(tabladiagnostico.RowCount);
            // FrmRolesver frm = new FrmRolesver();
             //lbltrabajadores.Text = F_Variables.sumaremple;
@@ -48,8 +45,6 @@ namespace CapaPresentacion
         }
         public void buscardiagnostico(string buscardiag)
         {
-            N_ReporteDiagnostico objNegocio = new N_ReporteDiagnostico();
-            tablaReporte.DataSource = objNegocio.buscandoreportdiag(buscardiag);
 
         }
 
@@ -71,7 +66,6 @@ namespace CapaPresentacion
                 if (resultado == DialogResult.OK)
                 {
                     int cam = Convert.ToInt32(tablaReporte.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    objNegocio.eliminandoReportdiag(cam);
                     FrmSuccess.confimarcionForm("ELIMINADO");
                     mostrarDiagnostico();
 

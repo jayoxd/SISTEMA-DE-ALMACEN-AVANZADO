@@ -79,10 +79,11 @@ namespace CapaPresentacion
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::CapaPresentacion.Properties.Resources.cat;
-            this.pictureBox4.Location = new System.Drawing.Point(140, 34);
+            this.pictureBox4.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.ErrorImage")));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(151, 31);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(83, 66);
+            this.pictureBox4.Size = new System.Drawing.Size(65, 59);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 19;
             this.pictureBox4.TabStop = false;
@@ -90,7 +91,7 @@ namespace CapaPresentacion
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.ELINMAAAAAAAAAAAAAARRRRRR;
-            this.pictureBox1.Location = new System.Drawing.Point(334, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(343, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

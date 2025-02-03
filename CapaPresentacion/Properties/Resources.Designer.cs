@@ -19,7 +19,7 @@ namespace CapaPresentacion.Properties {
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
     // con la opción /str o recompile su proyecto de VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -136,6 +136,26 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap CajaTexto {
             get {
                 object obj = ResourceManager.GetObject("CajaTexto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2025_01_29_093724 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2025-01-29 093724", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_pantalla_2025_01_29_093724_Nero_AI_Background_Remover {
+            get {
+                object obj = ResourceManager.GetObject("Captura de pantalla 2025-01-29 093724_Nero_AI_Background_Remover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -496,6 +516,16 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap Informarcion {
             get {
                 object obj = ResourceManager.GetObject("Informarcion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LANMEITRANSP {
+            get {
+                object obj = ResourceManager.GetObject("LANMEITRANSP", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -33,7 +33,6 @@ namespace CapaPresentacion
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarEmpleado));
             this.RadiusElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.cmbTipoDocumentoEM = new System.Windows.Forms.ComboBox();
-            this.txtIdEmpleado = new System.Windows.Forms.TextBox();
             this.txtTipoDocumen = new System.Windows.Forms.TextBox();
             this.txtNmrDocemp = new System.Windows.Forms.TextBox();
             this.txtTelefonoEM = new System.Windows.Forms.TextBox();
@@ -56,10 +55,7 @@ namespace CapaPresentacion
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbROLES = new System.Windows.Forms.ComboBox();
-            this.txtiidrol = new System.Windows.Forms.TextBox();
-            this.txtnrEMPLEADO = new System.Windows.Forms.TextBox();
             this.txtEmailemp = new System.Windows.Forms.TextBox();
-            this.txtnroRol = new System.Windows.Forms.TextBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -102,18 +98,6 @@ namespace CapaPresentacion
             this.cmbTipoDocumentoEM.Size = new System.Drawing.Size(229, 23);
             this.cmbTipoDocumentoEM.TabIndex = 151;
             this.cmbTipoDocumentoEM.SelectedIndexChanged += new System.EventHandler(this.cmbTipoDocumentoEM_SelectedIndexChanged);
-            // 
-            // txtIdEmpleado
-            // 
-            this.txtIdEmpleado.BackColor = System.Drawing.Color.White;
-            this.txtIdEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIdEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtIdEmpleado.ForeColor = System.Drawing.Color.White;
-            this.txtIdEmpleado.Location = new System.Drawing.Point(470, 45);
-            this.txtIdEmpleado.Name = "txtIdEmpleado";
-            this.txtIdEmpleado.ReadOnly = true;
-            this.txtIdEmpleado.Size = new System.Drawing.Size(50, 17);
-            this.txtIdEmpleado.TabIndex = 150;
             // 
             // txtTipoDocumen
             // 
@@ -355,28 +339,6 @@ namespace CapaPresentacion
             this.cmbROLES.TabIndex = 160;
             this.cmbROLES.SelectedIndexChanged += new System.EventHandler(this.cmbROLES_SelectedIndexChanged);
             // 
-            // txtiidrol
-            // 
-            this.txtiidrol.BackColor = System.Drawing.Color.White;
-            this.txtiidrol.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtiidrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtiidrol.ForeColor = System.Drawing.Color.Transparent;
-            this.txtiidrol.Location = new System.Drawing.Point(870, 408);
-            this.txtiidrol.Name = "txtiidrol";
-            this.txtiidrol.Size = new System.Drawing.Size(85, 17);
-            this.txtiidrol.TabIndex = 161;
-            // 
-            // txtnrEMPLEADO
-            // 
-            this.txtnrEMPLEADO.BackColor = System.Drawing.Color.White;
-            this.txtnrEMPLEADO.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtnrEMPLEADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrEMPLEADO.ForeColor = System.Drawing.Color.White;
-            this.txtnrEMPLEADO.Location = new System.Drawing.Point(891, 45);
-            this.txtnrEMPLEADO.Name = "txtnrEMPLEADO";
-            this.txtnrEMPLEADO.Size = new System.Drawing.Size(96, 13);
-            this.txtnrEMPLEADO.TabIndex = 162;
-            // 
             // txtEmailemp
             // 
             this.txtEmailemp.BackColor = System.Drawing.Color.White;
@@ -387,17 +349,6 @@ namespace CapaPresentacion
             this.txtEmailemp.Name = "txtEmailemp";
             this.txtEmailemp.Size = new System.Drawing.Size(244, 17);
             this.txtEmailemp.TabIndex = 163;
-            // 
-            // txtnroRol
-            // 
-            this.txtnroRol.BackColor = System.Drawing.Color.White;
-            this.txtnroRol.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtnroRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnroRol.ForeColor = System.Drawing.Color.White;
-            this.txtnroRol.Location = new System.Drawing.Point(727, 46);
-            this.txtnroRol.Name = "txtnroRol";
-            this.txtnroRol.Size = new System.Drawing.Size(96, 13);
-            this.txtnroRol.TabIndex = 166;
             // 
             // pictureBox9
             // 
@@ -532,19 +483,15 @@ namespace CapaPresentacion
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1047, 498);
             this.Controls.Add(this.txtTipoDocumen);
-            this.Controls.Add(this.txtnroRol);
             this.Controls.Add(this.txtClave);
             this.Controls.Add(this.txtEmailemp);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.txtnrEMPLEADO);
-            this.Controls.Add(this.txtiidrol);
             this.Controls.Add(this.cmbROLES);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtDireccionemp);
             this.Controls.Add(this.cmbTipoDocumentoEM);
-            this.Controls.Add(this.txtIdEmpleado);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -591,7 +538,6 @@ namespace CapaPresentacion
 
         private Bunifu.Framework.UI.BunifuElipse RadiusElipse;
         public System.Windows.Forms.ComboBox cmbTipoDocumentoEM;
-        public System.Windows.Forms.TextBox txtIdEmpleado;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         public System.Windows.Forms.TextBox txtTipoDocumen;
@@ -627,6 +573,5 @@ namespace CapaPresentacion
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox8;
         public System.Windows.Forms.TextBox txtEmailemp;
-        public System.Windows.Forms.TextBox txtnroRol;
     }
 }

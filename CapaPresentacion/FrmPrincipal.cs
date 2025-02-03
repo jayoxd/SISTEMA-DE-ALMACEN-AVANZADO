@@ -43,57 +43,72 @@ namespace CapaPresentacion
             }
         }
 
+        
+
+
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
            pantallaOK();
+            AbrirFormularioEnWrapper(new FrmInventario());
+
+            // Ocultar botones según el rol
+            btnAcceso.Visible = this.rol.Equals("Administrador");
+            btnKardex.Visible = true; // Siempre visible
+            btnDiagnostico.Visible = this.rol.Equals("Administrador") || this.rol.Equals("Jefe de Almacen");
+            btnServicio.Visible = this.rol.Equals("Administrador") || this.rol.Equals("Jefe de Almacen");
+            btnPRoductos.Visible = this.rol.Equals("Administrador") || this.rol.Equals("Jefe de Almacen");
+            btnReportes.Visible = true; // Siempre visible
+            btnclientes.Visible = this.rol.Equals("Administrador") || this.rol.Equals("Jefe de Almacen");
+            btnproveedores.Visible = this.rol.Equals("Administrador") || this.rol.Equals("Jefe de Almacen");
 
             txtcreador.Text = this.nombre;
             lblUSER.Text = this.rol;
             if (this.rol.Equals("Administrador"))
             {
                 btnAcceso.Enabled = true;
-                btnClientes.Enabled = true;
+                btnKardex.Enabled = true;
                 btnDiagnostico.Enabled = true;
+                btnServicio.Enabled = true;
                 btnPRoductos.Enabled = true;
                 btnAcceso.Enabled = true;
-                btnServicio.Enabled = true;
+                btnReportes.Enabled = true;
+                btnclientes.Enabled = true;
+                btnDiagnostico.Enabled = true;
+                btnproveedores.Enabled = true;
 
             }
             else
             {
-                if (this.rol.Equals("Secretaria"))
+                if (this.rol.Equals("Jefe de Almacen"))
                 {
 
-                    btnAcceso.Enabled = false;
-                    btnClientes.Enabled = true;
+                    btnAcceso.Enabled = true;
+                    btnKardex.Enabled = true;
                     btnDiagnostico.Enabled = true;
-                    btnPRoductos.Enabled = false;
-                    btnAcceso.Enabled = false;
                     btnServicio.Enabled = true;
+                    btnPRoductos.Enabled = true;
+                    btnAcceso.Enabled = false;
+                    btnReportes.Enabled = true;
+                    btnclientes.Enabled = true;
+                    btnDiagnostico.Enabled = true;
+                    btnproveedores.Enabled = true;
                 }
                 else
                 {
-                    if (this.rol.Equals("Mecanico"))
+                    if (this.rol.Equals("Rol de Visualización"))
                     {
                         btnAcceso.Enabled = false;
-                        btnClientes.Enabled = false;
+                        btnKardex.Enabled = true;
                         btnDiagnostico.Enabled = true;
                         btnServicio.Enabled = false;
                         btnPRoductos.Enabled = false;
                         btnAcceso.Enabled = false;
+                        btnReportes.Enabled = true;
+                        btnclientes.Enabled = false;
+                        btnDiagnostico.Enabled = false;
+                        btnproveedores.Enabled = false;
                     }
-                    else
-                    {
-                        if (this.rol.Equals("Almacenero"))
-                        {
-                            btnAcceso.Enabled = false;
-                            btnClientes.Enabled = false;
-                            btnDiagnostico.Enabled = false;
-                            btnPRoductos.Enabled = true;
-                            btnAcceso.Enabled = false;
-                            btnServicio.Enabled = false;
-                        }
-                    }
+                   
                 }
 
             }
@@ -105,29 +120,33 @@ namespace CapaPresentacion
 
         public void seleccionandoBoton(Bunifu.Framework.UI.BunifuFlatButton sender)
         {
-            btnClientes.Textcolor = Color.White;
+            btnKardex.Textcolor = Color.White;
             btnPRoductos.Textcolor = Color.White;
             btnServicio.Textcolor = Color.White;
             btnDiagnostico.Textcolor = Color.White;
             btnAcceso.Textcolor = Color.White;
+            btnReportes.Textcolor = Color.White;
+            btnclientes.Textcolor  = Color.White;
+            btnproveedores.Textcolor = Color.White;
 
             sender.selected = true;
             if (sender.selected)
             {
-                sender.Textcolor = Color.FromArgb(98, 195, 140);
+                sender.Textcolor = Color.Black;
             }
         }
 
         private void Seguirboton(Bunifu.Framework.UI.BunifuFlatButton sender)
         {
-            flecha.Top = sender.Top;
+            flecha.Top = sender.Top + (sender.Height - flecha.Height) / 2; // Asegurar que esté alineada verticalmente
+            flecha.BringToFront(); // Forzar que la flecha esté encima de todos los botones
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
             seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
             Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            AbrirFormularioEnWrapper(new FrmCliente());
+          //  AbrirFormularioEnWrapper(new FrmCliente());
 
         }
 
@@ -155,16 +174,22 @@ namespace CapaPresentacion
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+            FrmEntrada frmEntrada = new FrmEntrada();
+            frmEntrada.Idusuario = this.Idusuario; // Pasar el Idusuario al formulario
+
             seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
             Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            AbrirFormularioEnWrapper(new FrmDiagnostico());
+            AbrirFormularioEnWrapper(frmEntrada); // Abrir el mismo formulario al que se asignó el Idusuario
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
+            FrmSalida frmSalida = new FrmSalida();
+            frmSalida.Idusuario = this.Idusuario; // Pasar el Idusuario al formulario
+
             seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
             Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
-            AbrirFormularioEnWrapper(new FrmServicio());
+            AbrirFormularioEnWrapper(frmSalida); // Abrir el mismo formulario al que se asignó el Idusuario
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
@@ -177,6 +202,42 @@ namespace CapaPresentacion
         private void lblUSER_Click(object sender, EventArgs e)
         {
 
+        }
+
+     
+
+        private void btnKardex_Click(object sender, EventArgs e)
+        {
+            seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+
+            AbrirFormularioEnWrapper(new FrmInventario());
+        }
+
+        private void flecha_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            AbrirFormularioEnWrapper(new FrmEntradaSalida());
+        }
+
+        private void btnclientes_Click_1(object sender, EventArgs e)
+        {
+            seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            AbrirFormularioEnWrapper(new FrmPersonas());
+        }
+
+        private void btnproveedores_Click(object sender, EventArgs e)
+        {
+            seleccionandoBoton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            Seguirboton((Bunifu.Framework.UI.BunifuFlatButton)sender);
+            AbrirFormularioEnWrapper(new FrmProveedores());
         }
     }
 }

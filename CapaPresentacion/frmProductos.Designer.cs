@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace CapaPresentacion
 {
     partial class frmProductos
@@ -29,18 +31,14 @@ namespace CapaPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox15 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblEstadoProductos = new System.Windows.Forms.Label();
+            this.Btnoinahbilitados = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TablaPRODUCTOS = new System.Windows.Forms.DataGridView();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
@@ -48,38 +46,46 @@ namespace CapaPresentacion
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btnProductos = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.btnNuevaCategoria = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lblStock = new System.Windows.Forms.Label();
+            this.lblProductosInhabilitados = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.lblCategoria = new System.Windows.Forms.Label();
+            this.lblProductosHabilitados = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lblProductos = new System.Windows.Forms.Label();
+            this.lblUltimoProducto = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lblproducbajostock = new System.Windows.Forms.Label();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lblMasSalidas = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.lblMasEntradas = new System.Windows.Forms.Label();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPRODUCTOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -93,192 +99,171 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.SuspendLayout();
             // 
             // panel9
             // 
             this.panel9.BackgroundImage = global::CapaPresentacion.Properties.Resources.SombraPanelProductos;
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel9.Controls.Add(this.label17);
-            this.panel9.Controls.Add(this.label16);
-            this.panel9.Controls.Add(this.label15);
-            this.panel9.Controls.Add(this.label14);
-            this.panel9.Controls.Add(this.label13);
-            this.panel9.Controls.Add(this.label12);
-            this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.label10);
-            this.panel9.Controls.Add(this.label9);
+            this.panel9.Controls.Add(this.label3);
+            this.panel9.Controls.Add(this.pictureBox15);
+            this.panel9.Controls.Add(this.label2);
+            this.panel9.Controls.Add(this.lblEstadoProductos);
+            this.panel9.Controls.Add(this.Btnoinahbilitados);
             this.panel9.Controls.Add(this.TablaPRODUCTOS);
             this.panel9.Controls.Add(this.txbBuscarProducto);
             this.panel9.Controls.Add(this.pictureBox9);
             this.panel9.Controls.Add(this.pictureBox10);
             this.panel9.Controls.Add(this.btnProductos);
-            this.panel9.Controls.Add(this.btnNuevaCategoria);
             this.panel9.Location = new System.Drawing.Point(3, 271);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1638, 863);
+            this.panel9.Size = new System.Drawing.Size(1298, 605);
             this.panel9.TabIndex = 4;
+            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
-            // label17
+            // label3
             // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Gray;
-            this.label17.Location = new System.Drawing.Point(1461, 337);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 18);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "ESTADO";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(1175, 119);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 18);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "excel";
             // 
-            // label16
+            // pictureBox15
             // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(1283, 337);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(76, 18);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "ELIMINAR";
+            this.pictureBox15.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.ImageActive = null;
+            this.pictureBox15.Location = new System.Drawing.Point(1169, 33);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(55, 65);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox15.TabIndex = 22;
+            this.pictureBox15.TabStop = false;
+            this.pictureBox15.Zoom = 10;
+            this.pictureBox15.Click += new System.EventHandler(this.pictureBox15_Click_1);
             // 
-            // label15
+            // label2
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(1122, 337);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(61, 18);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "EDITAR";
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(1166, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 18);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Generar";
             // 
-            // label14
+            // lblEstadoProductos
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(212, 337);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(95, 18);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "PRODUCTO";
+            this.lblEstadoProductos.AutoSize = true;
+            this.lblEstadoProductos.BackColor = System.Drawing.Color.Transparent;
+            this.lblEstadoProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoProductos.ForeColor = System.Drawing.Color.Gray;
+            this.lblEstadoProductos.Location = new System.Drawing.Point(41, 45);
+            this.lblEstadoProductos.Name = "lblEstadoProductos";
+            this.lblEstadoProductos.Size = new System.Drawing.Size(105, 18);
+            this.lblEstadoProductos.TabIndex = 19;
+            this.lblEstadoProductos.Text = "PRODUCTOS";
+            this.lblEstadoProductos.Click += new System.EventHandler(this.lblEstadoProductos_Click);
             // 
-            // label13
+            // Btnoinahbilitados
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(378, 337);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 18);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "CATEGORIA";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Gray;
-            this.label12.Location = new System.Drawing.Point(554, 337);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 18);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "MARCA";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(730, 337);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 18);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "PRECIO";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(887, 337);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 18);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "STOCK";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(30, 337);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 18);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "CODIGO";
+            this.Btnoinahbilitados.ActiveBorderThickness = 1;
+            this.Btnoinahbilitados.ActiveCornerRadius = 20;
+            this.Btnoinahbilitados.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.Btnoinahbilitados.ActiveForecolor = System.Drawing.Color.White;
+            this.Btnoinahbilitados.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.Btnoinahbilitados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
+            this.Btnoinahbilitados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btnoinahbilitados.BackgroundImage")));
+            this.Btnoinahbilitados.ButtonText = "MOSTRAR PRODUCTOS INHABILITADOS";
+            this.Btnoinahbilitados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btnoinahbilitados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Btnoinahbilitados.ForeColor = System.Drawing.Color.White;
+            this.Btnoinahbilitados.IdleBorderThickness = 1;
+            this.Btnoinahbilitados.IdleCornerRadius = 20;
+            this.Btnoinahbilitados.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.Btnoinahbilitados.IdleForecolor = System.Drawing.Color.White;
+            this.Btnoinahbilitados.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.Btnoinahbilitados.Location = new System.Drawing.Point(822, 89);
+            this.Btnoinahbilitados.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.Btnoinahbilitados.Name = "Btnoinahbilitados";
+            this.Btnoinahbilitados.Size = new System.Drawing.Size(303, 55);
+            this.Btnoinahbilitados.TabIndex = 18;
+            this.Btnoinahbilitados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Btnoinahbilitados.Click += new System.EventHandler(this.Btnoinahbilitados_Click);
             // 
             // TablaPRODUCTOS
             // 
             this.TablaPRODUCTOS.AllowUserToAddRows = false;
             this.TablaPRODUCTOS.AllowUserToDeleteRows = false;
             this.TablaPRODUCTOS.AllowUserToOrderColumns = true;
-            this.TablaPRODUCTOS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TablaPRODUCTOS.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.TablaPRODUCTOS.BackgroundColor = System.Drawing.Color.White;
             this.TablaPRODUCTOS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TablaPRODUCTOS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.TablaPRODUCTOS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TablaPRODUCTOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaPRODUCTOS.ColumnHeadersVisible = false;
             this.TablaPRODUCTOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EDITAR,
             this.ELIMINAR});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TablaPRODUCTOS.DefaultCellStyle = dataGridViewCellStyle1;
-            this.TablaPRODUCTOS.Location = new System.Drawing.Point(35, 366);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TablaPRODUCTOS.DefaultCellStyle = dataGridViewCellStyle2;
+            this.TablaPRODUCTOS.Location = new System.Drawing.Point(30, 154);
             this.TablaPRODUCTOS.Name = "TablaPRODUCTOS";
             this.TablaPRODUCTOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TablaPRODUCTOS.RowHeadersVisible = false;
+            this.TablaPRODUCTOS.RowHeadersWidth = 92;
             this.TablaPRODUCTOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TablaPRODUCTOS.Size = new System.Drawing.Size(1552, 459);
+            this.TablaPRODUCTOS.Size = new System.Drawing.Size(1250, 434);
             this.TablaPRODUCTOS.TabIndex = 8;
             this.TablaPRODUCTOS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaPRODUCTOS_CellContentClick);
             // 
             // EDITAR
             // 
+            this.EDITAR.FillWeight = 169.5432F;
             this.EDITAR.HeaderText = "EDITAR";
             this.EDITAR.Image = global::CapaPresentacion.Properties.Resources.EditarProducto;
+            this.EDITAR.MinimumWidth = 11;
             this.EDITAR.Name = "EDITAR";
+            this.EDITAR.Width = 80;
             // 
             // ELIMINAR
             // 
+            this.ELIMINAR.FillWeight = 30.45685F;
             this.ELIMINAR.HeaderText = "ELIMINAR";
             this.ELIMINAR.Image = global::CapaPresentacion.Properties.Resources.EliminarProducto;
+            this.ELIMINAR.MinimumWidth = 11;
             this.ELIMINAR.Name = "ELIMINAR";
+            this.ELIMINAR.Width = 80;
             // 
             // txbBuscarProducto
             // 
             this.txbBuscarProducto.BackColor = System.Drawing.Color.White;
             this.txbBuscarProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txbBuscarProducto.Location = new System.Drawing.Point(83, 228);
+            this.txbBuscarProducto.Location = new System.Drawing.Point(98, 89);
             this.txbBuscarProducto.Name = "txbBuscarProducto";
             this.txbBuscarProducto.Size = new System.Drawing.Size(360, 17);
             this.txbBuscarProducto.TabIndex = 7;
@@ -288,7 +273,7 @@ namespace CapaPresentacion
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = global::CapaPresentacion.Properties.Resources.Buscar;
-            this.pictureBox9.Location = new System.Drawing.Point(44, 222);
+            this.pictureBox9.Location = new System.Drawing.Point(59, 83);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(33, 29);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -298,7 +283,7 @@ namespace CapaPresentacion
             // pictureBox10
             // 
             this.pictureBox10.Image = global::CapaPresentacion.Properties.Resources.CajaTexto;
-            this.pictureBox10.Location = new System.Drawing.Point(35, 214);
+            this.pictureBox10.Location = new System.Drawing.Point(50, 75);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(415, 44);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -323,131 +308,47 @@ namespace CapaPresentacion
             this.btnProductos.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(110)))), ((int)(((byte)(242)))));
             this.btnProductos.IdleForecolor = System.Drawing.Color.White;
             this.btnProductos.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(110)))), ((int)(((byte)(242)))));
-            this.btnProductos.Location = new System.Drawing.Point(905, 196);
+            this.btnProductos.Location = new System.Drawing.Point(558, 89);
             this.btnProductos.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(279, 55);
+            this.btnProductos.Size = new System.Drawing.Size(210, 55);
             this.btnProductos.TabIndex = 3;
             this.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnProductos.Click += new System.EventHandler(this.bunifuThinButton24_Click);
             // 
-            // btnNuevaCategoria
-            // 
-            this.btnNuevaCategoria.ActiveBorderThickness = 1;
-            this.btnNuevaCategoria.ActiveCornerRadius = 20;
-            this.btnNuevaCategoria.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(215)))), ((int)(((byte)(129)))));
-            this.btnNuevaCategoria.ActiveForecolor = System.Drawing.Color.White;
-            this.btnNuevaCategoria.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(215)))), ((int)(((byte)(129)))));
-            this.btnNuevaCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
-            this.btnNuevaCategoria.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNuevaCategoria.BackgroundImage")));
-            this.btnNuevaCategoria.ButtonText = "CATEGORIA";
-            this.btnNuevaCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNuevaCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btnNuevaCategoria.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaCategoria.IdleBorderThickness = 1;
-            this.btnNuevaCategoria.IdleCornerRadius = 20;
-            this.btnNuevaCategoria.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(215)))), ((int)(((byte)(132)))));
-            this.btnNuevaCategoria.IdleForecolor = System.Drawing.Color.White;
-            this.btnNuevaCategoria.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(215)))), ((int)(((byte)(132)))));
-            this.btnNuevaCategoria.Location = new System.Drawing.Point(1261, 196);
-            this.btnNuevaCategoria.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.btnNuevaCategoria.Name = "btnNuevaCategoria";
-            this.btnNuevaCategoria.Size = new System.Drawing.Size(279, 55);
-            this.btnNuevaCategoria.TabIndex = 2;
-            this.btnNuevaCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnNuevaCategoria.Click += new System.EventHandler(this.btnNuevaCategoria_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel8);
-            this.panel4.Location = new System.Drawing.Point(3, 137);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(405, 128);
-            this.panel4.TabIndex = 3;
-            // 
-            // panel8
-            // 
-            this.panel8.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
-            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel8.Controls.Add(this.dateTimePicker1);
-            this.panel8.Controls.Add(this.pictureBox8);
-            this.panel8.Controls.Add(this.label8);
-            this.panel8.Location = new System.Drawing.Point(7, 8);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(390, 113);
-            this.panel8.TabIndex = 5;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.Gray;
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.Gray;
-            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.Gray;
-            this.dateTimePicker1.CausesValidation = false;
-            this.dateTimePicker1.Checked = false;
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(96, 22);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(204, 44);
-            this.dateTimePicker1.TabIndex = 95;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = global::CapaPresentacion.Properties.Resources.linea_negra;
-            this.pictureBox8.Location = new System.Drawing.Point(16, 58);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(351, 20);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 1;
-            this.pictureBox8.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(16, 75);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 18);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "FECHA";
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Location = new System.Drawing.Point(825, 3);
+            this.panel3.Location = new System.Drawing.Point(877, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(405, 128);
+            this.panel3.Size = new System.Drawing.Size(418, 128);
             this.panel3.TabIndex = 2;
             // 
             // panel7
             // 
             this.panel7.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel7.Controls.Add(this.lblStock);
+            this.panel7.Controls.Add(this.lblProductosInhabilitados);
             this.panel7.Controls.Add(this.pictureBox5);
             this.panel7.Controls.Add(this.pictureBox6);
             this.panel7.Controls.Add(this.label6);
-            this.panel7.Location = new System.Drawing.Point(7, 8);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(390, 113);
+            this.panel7.Size = new System.Drawing.Size(418, 128);
             this.panel7.TabIndex = 5;
             // 
-            // lblStock
+            // lblProductosInhabilitados
             // 
-            this.lblStock.BackColor = System.Drawing.Color.Transparent;
-            this.lblStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStock.ForeColor = System.Drawing.Color.Gray;
-            this.lblStock.Location = new System.Drawing.Point(263, 15);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(104, 46);
-            this.lblStock.TabIndex = 5;
-            this.lblStock.Text = "10";
-            this.lblStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProductosInhabilitados.BackColor = System.Drawing.Color.Transparent;
+            this.lblProductosInhabilitados.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductosInhabilitados.ForeColor = System.Drawing.Color.Gray;
+            this.lblProductosInhabilitados.Location = new System.Drawing.Point(263, 15);
+            this.lblProductosInhabilitados.Name = "lblProductosInhabilitados";
+            this.lblProductosInhabilitados.Size = new System.Drawing.Size(104, 46);
+            this.lblProductosInhabilitados.TabIndex = 5;
+            this.lblProductosInhabilitados.Text = "10";
+            this.lblProductosInhabilitados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox5
             // 
@@ -477,50 +378,51 @@ namespace CapaPresentacion
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(16, 75);
+            this.label6.Location = new System.Drawing.Point(13, 82);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 18);
+            this.label6.Size = new System.Drawing.Size(315, 18);
             this.label6.TabIndex = 4;
-            this.label6.Text = "STOCK";
+            this.label6.Text = "CANTIDAD  DE PRODUCTO INHABILITADOS";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel6);
-            this.panel2.Location = new System.Drawing.Point(414, 3);
+            this.panel2.Location = new System.Drawing.Point(426, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(405, 128);
+            this.panel2.Size = new System.Drawing.Size(445, 128);
             this.panel2.TabIndex = 1;
             // 
             // panel6
             // 
             this.panel6.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Controls.Add(this.lblCategoria);
+            this.panel6.Controls.Add(this.lblProductosHabilitados);
             this.panel6.Controls.Add(this.pictureBox3);
             this.panel6.Controls.Add(this.pictureBox4);
             this.panel6.Controls.Add(this.label4);
-            this.panel6.Location = new System.Drawing.Point(7, 8);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(390, 113);
+            this.panel6.Size = new System.Drawing.Size(445, 128);
             this.panel6.TabIndex = 5;
             // 
-            // lblCategoria
+            // lblProductosHabilitados
             // 
-            this.lblCategoria.BackColor = System.Drawing.Color.Transparent;
-            this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.ForeColor = System.Drawing.Color.Gray;
-            this.lblCategoria.Location = new System.Drawing.Point(263, 15);
-            this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(104, 46);
-            this.lblCategoria.TabIndex = 5;
-            this.lblCategoria.Text = "10";
-            this.lblCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProductosHabilitados.BackColor = System.Drawing.Color.Transparent;
+            this.lblProductosHabilitados.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductosHabilitados.ForeColor = System.Drawing.Color.Gray;
+            this.lblProductosHabilitados.Location = new System.Drawing.Point(286, 15);
+            this.lblProductosHabilitados.Name = "lblProductosHabilitados";
+            this.lblProductosHabilitados.Size = new System.Drawing.Size(104, 46);
+            this.lblProductosHabilitados.TabIndex = 5;
+            this.lblProductosHabilitados.Text = "10";
+            this.lblProductosHabilitados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::CapaPresentacion.Properties.Resources.Categorias;
-            this.pictureBox3.Location = new System.Drawing.Point(16, 15);
+            this.pictureBox3.Location = new System.Drawing.Point(39, 15);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -531,7 +433,7 @@ namespace CapaPresentacion
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::CapaPresentacion.Properties.Resources.linea_negra;
-            this.pictureBox4.Location = new System.Drawing.Point(16, 58);
+            this.pictureBox4.Location = new System.Drawing.Point(39, 58);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(351, 20);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -544,44 +446,45 @@ namespace CapaPresentacion
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(16, 75);
+            this.label4.Location = new System.Drawing.Point(36, 81);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 18);
+            this.label4.Size = new System.Drawing.Size(301, 18);
             this.label4.TabIndex = 4;
-            this.label4.Text = "CATEGORIA";
+            this.label4.Text = "CANTIDAD  DE PRODUCTO HABILITADOS";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 128);
+            this.panel1.Size = new System.Drawing.Size(417, 128);
             this.panel1.TabIndex = 0;
             // 
             // panel5
             // 
             this.panel5.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Controls.Add(this.lblProductos);
+            this.panel5.Controls.Add(this.lblUltimoProducto);
             this.panel5.Controls.Add(this.pictureBox1);
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Location = new System.Drawing.Point(9, 9);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(390, 113);
+            this.panel5.Size = new System.Drawing.Size(417, 128);
             this.panel5.TabIndex = 4;
             // 
-            // lblProductos
+            // lblUltimoProducto
             // 
-            this.lblProductos.BackColor = System.Drawing.Color.Transparent;
-            this.lblProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductos.ForeColor = System.Drawing.Color.Gray;
-            this.lblProductos.Location = new System.Drawing.Point(263, 15);
-            this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(104, 46);
-            this.lblProductos.TabIndex = 5;
-            this.lblProductos.Text = "10";
-            this.lblProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUltimoProducto.BackColor = System.Drawing.Color.Transparent;
+            this.lblUltimoProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimoProducto.ForeColor = System.Drawing.Color.Gray;
+            this.lblUltimoProducto.Location = new System.Drawing.Point(161, 36);
+            this.lblUltimoProducto.Name = "lblUltimoProducto";
+            this.lblUltimoProducto.Size = new System.Drawing.Size(206, 28);
+            this.lblUltimoProducto.TabIndex = 5;
+            this.lblUltimoProducto.Text = "10";
+            this.lblUltimoProducto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -611,24 +514,218 @@ namespace CapaPresentacion
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(16, 75);
+            this.label1.Location = new System.Drawing.Point(13, 81);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 18);
+            this.label1.Size = new System.Drawing.Size(257, 18);
             this.label1.TabIndex = 4;
-            this.label1.Text = "PRODUCTOS";
+            this.label1.Text = "ULTIMO PRODUCTO REGISTRADO";
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
+            this.flowLayoutPanel1.Controls.Add(this.panel8);
+            this.flowLayoutPanel1.Controls.Add(this.panel10);
+            this.flowLayoutPanel1.Controls.Add(this.panel11);
             this.flowLayoutPanel1.Controls.Add(this.panel9);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1300, 1000);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1342, 353);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(1301, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 128);
+            this.panel4.TabIndex = 6;
+            // 
+            // panel8
+            // 
+            this.panel8.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
+            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel8.Controls.Add(this.lblproducbajostock);
+            this.panel8.Controls.Add(this.pictureBox13);
+            this.panel8.Controls.Add(this.pictureBox14);
+            this.panel8.Controls.Add(this.label18);
+            this.panel8.Location = new System.Drawing.Point(3, 137);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(417, 128);
+            this.panel8.TabIndex = 6;
+            // 
+            // lblproducbajostock
+            // 
+            this.lblproducbajostock.BackColor = System.Drawing.Color.Transparent;
+            this.lblproducbajostock.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblproducbajostock.ForeColor = System.Drawing.Color.Gray;
+            this.lblproducbajostock.Location = new System.Drawing.Point(263, 15);
+            this.lblproducbajostock.Name = "lblproducbajostock";
+            this.lblproducbajostock.Size = new System.Drawing.Size(104, 46);
+            this.lblproducbajostock.TabIndex = 5;
+            this.lblproducbajostock.Text = "10";
+            this.lblproducbajostock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox13.Image = global::CapaPresentacion.Properties.Resources.Totales;
+            this.pictureBox13.Location = new System.Drawing.Point(16, 15);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox13.TabIndex = 0;
+            this.pictureBox13.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox14.Image = global::CapaPresentacion.Properties.Resources.linea_negra;
+            this.pictureBox14.Location = new System.Drawing.Point(16, 58);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(351, 20);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox14.TabIndex = 1;
+            this.pictureBox14.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Gray;
+            this.label18.Location = new System.Drawing.Point(13, 81);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(263, 18);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "PRODUCTOS CON BAJO STOCK <3";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // panel10
+            // 
+            this.panel10.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
+            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel10.Controls.Add(this.lblMasSalidas);
+            this.panel10.Controls.Add(this.pictureBox7);
+            this.panel10.Controls.Add(this.pictureBox11);
+            this.panel10.Controls.Add(this.label7);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(426, 137);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(445, 128);
+            this.panel10.TabIndex = 6;
+            // 
+            // lblMasSalidas
+            // 
+            this.lblMasSalidas.BackColor = System.Drawing.Color.Transparent;
+            this.lblMasSalidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMasSalidas.ForeColor = System.Drawing.Color.Gray;
+            this.lblMasSalidas.Location = new System.Drawing.Point(114, 15);
+            this.lblMasSalidas.Name = "lblMasSalidas";
+            this.lblMasSalidas.Size = new System.Drawing.Size(276, 46);
+            this.lblMasSalidas.TabIndex = 5;
+            this.lblMasSalidas.Text = "10";
+            this.lblMasSalidas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.Image = global::CapaPresentacion.Properties.Resources.Categorias;
+            this.pictureBox7.Location = new System.Drawing.Point(39, 15);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox11.Image = global::CapaPresentacion.Properties.Resources.linea_negra;
+            this.pictureBox11.Location = new System.Drawing.Point(39, 58);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(351, 20);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 1;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Gray;
+            this.label7.Location = new System.Drawing.Point(36, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(243, 18);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "PRODUCTOS CON MAS SALIDAS";
+            // 
+            // panel11
+            // 
+            this.panel11.BackgroundImage = global::CapaPresentacion.Properties.Resources.SobraCajasTotales;
+            this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel11.Controls.Add(this.lblMasEntradas);
+            this.panel11.Controls.Add(this.pictureBox16);
+            this.panel11.Controls.Add(this.pictureBox17);
+            this.panel11.Controls.Add(this.label8);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(877, 137);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(418, 128);
+            this.panel11.TabIndex = 24;
+            // 
+            // lblMasEntradas
+            // 
+            this.lblMasEntradas.BackColor = System.Drawing.Color.Transparent;
+            this.lblMasEntradas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMasEntradas.ForeColor = System.Drawing.Color.Gray;
+            this.lblMasEntradas.Location = new System.Drawing.Point(98, 9);
+            this.lblMasEntradas.Name = "lblMasEntradas";
+            this.lblMasEntradas.Size = new System.Drawing.Size(276, 46);
+            this.lblMasEntradas.TabIndex = 5;
+            this.lblMasEntradas.Text = "10";
+            this.lblMasEntradas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox16.Image = global::CapaPresentacion.Properties.Resources.Productos;
+            this.pictureBox16.Location = new System.Drawing.Point(16, 15);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox16.TabIndex = 0;
+            this.pictureBox16.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox17.Image = global::CapaPresentacion.Properties.Resources.linea_negra;
+            this.pictureBox17.Location = new System.Drawing.Point(16, 58);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(351, 20);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox17.TabIndex = 1;
+            this.pictureBox17.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Gray;
+            this.label8.Location = new System.Drawing.Point(13, 81);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(253, 18);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "PRODUCTO CON MÁS ENTRADAS";
             // 
             // frmProductos
             // 
@@ -636,20 +733,17 @@ namespace CapaPresentacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
-            this.ClientSize = new System.Drawing.Size(1300, 1000);
+            this.ClientSize = new System.Drawing.Size(1342, 353);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProductos";
             this.Text = "frmProductos";
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPRODUCTOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -666,6 +760,18 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -673,46 +779,53 @@ namespace CapaPresentacion
         #endregion
 
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView TablaPRODUCTOS;
-        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
-        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
         private System.Windows.Forms.TextBox txbBuscarProducto;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
         private Bunifu.Framework.UI.BunifuThinButton2 btnProductos;
-        private Bunifu.Framework.UI.BunifuThinButton2 btnNuevaCategoria;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Label lblProductosInhabilitados;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.Label lblProductosHabilitados;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lblProductos;
+        private System.Windows.Forms.Label lblUltimoProducto;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private Bunifu.Framework.UI.BunifuThinButton2 Btnoinahbilitados;
+
+        private System.Windows.Forms.Label lblEstadoProductos;
+        private DataGridViewImageColumn EDITAR;
+        private DataGridViewImageColumn ELIMINAR;
+        private Panel panel10;
+        private Label lblMasSalidas;
+        private PictureBox pictureBox7;
+        private PictureBox pictureBox11;
+        private Label label7;
+        private Label lblMasEntradas;
+        private Panel panel8;
+        private Label lblproducbajostock;
+        private PictureBox pictureBox13;
+        private PictureBox pictureBox14;
+        private Label label18;
+        private Label label2;
+        private Bunifu.Framework.UI.BunifuImageButton pictureBox15;
+        private Label label3;
+        private Panel panel4;
+        private Panel panel11;
+        private PictureBox pictureBox16;
+        private PictureBox pictureBox17;
+        private Label label8;
     }
 }

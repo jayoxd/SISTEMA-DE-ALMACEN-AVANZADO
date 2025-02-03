@@ -14,15 +14,22 @@ namespace CapaNegocio
         D_Usuario objDatos = new D_Usuario();
         E_Usuario entidades = new E_Usuario();
 
-        public DataTable listandoEmpleados()
+        // Método para listar empleados activos o inactivos
+        public DataTable ListarEmpleados(bool activo)
         {
-            return objDatos.ListarEmpleados();
+            return objDatos.ListarEmpleados(activo);
         }
 
-        public DataTable buscandoEmpleado(string buscar)
+        // Método para buscar empleados activos o inactivos
+        public DataTable BuscarEmpleado(string valor, bool activo)
         {
-            entidades.Buscaremp = buscar;
-            return objDatos.BuscarEmpleado(entidades);
+            return objDatos.BuscarEmpleado(valor, activo);
+        }
+
+        // Método para cambiar estado (activar/desactivar) de un empleado
+        public void CambiarEstadoEmpleado(int id, bool activo)
+        {
+            objDatos.CambiarEstadoEmpleado(id, activo);
         }
 
         public DataTable login(string Email,string Clave)
@@ -56,5 +63,14 @@ namespace CapaNegocio
             return objDatos.Desactivar(Id);
         }
 
+        public string obtenerClaveEmpleado(int idEmpleado)
+        {
+            return objDatos.ObtenerClaveEmpleado(idEmpleado);
+        }
+
+        public bool VerificarEmailExistente(string email, int? idEmpleado = null)
+        {
+            return objDatos.VerificarEmailExistente(email, idEmpleado);
+        }
     }
 }

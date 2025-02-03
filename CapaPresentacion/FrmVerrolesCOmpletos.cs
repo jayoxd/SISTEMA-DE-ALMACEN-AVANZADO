@@ -35,9 +35,10 @@ namespace CapaPresentacion
         public void accionestabla()
         {
           TablaRoles.Columns[0].Visible = false;
-        
+            TablaRoles.Columns[3].Visible = false;
 
-      
+
+
             TablaRoles.ClearSelection();
         }
 

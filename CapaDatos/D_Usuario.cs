@@ -16,39 +16,7 @@ namespace CapaDatos
         SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
 
         //metodo encargado de buscar y listar los  objetos como los atributos en la entidad cliente
-        public DataTable ListarEmpleados()
-        {
-            DataTable table = new DataTable();
-            SqlDataReader leerfilas;
-            SqlCommand cmd = new SqlCommand("empleado_listar", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            conexion.Open();
-
-            leerfilas = cmd.ExecuteReader();
-            table.Load(leerfilas);
-
-            leerfilas.Close();
-            conexion.Close();
-
-            return table;
-
-        }
-
-        public DataTable BuscarEmpleado(E_Usuario usuario)
-        {
-            DataTable tabla = new DataTable();
-            SqlCommand cmd = new SqlCommand("empleado_buscar", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            conexion.Open();
-
-            cmd.Parameters.AddWithValue("@valor", usuario.Buscaremp);
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(tabla);
-
-            conexion.Close();
-            return tabla;
-        }
+       
 
         public DataTable Login(string email, string clave)
         {
@@ -130,7 +98,56 @@ namespace CapaDatos
         }
 
 
-        
+        // Método para listar empleados activos o inactivos
+        public DataTable ListarEmpleados(bool activo)
+        {
+            DataTable table = new DataTable();
+            SqlCommand cmd = new SqlCommand("empleado_listar", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@activo", activo); // Pasa el estado como parámetro
+
+            conexion.Open();
+            SqlDataReader leerfilas = cmd.ExecuteReader();
+            table.Load(leerfilas);
+
+            leerfilas.Close();
+            conexion.Close();
+
+            return table;
+        }
+
+        // Método para buscar empleados activos o inactivos según valor de búsqueda
+        public DataTable BuscarEmpleado(string valor, bool activo)
+        {
+            DataTable table = new DataTable();
+            SqlCommand cmd = new SqlCommand("empleado_buscar", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@valor", valor);
+            cmd.Parameters.AddWithValue("@activo", activo); // Pasa el estado como parámetro
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(table);
+
+            return table;
+        }
+
+        // Método para activar/desactivar un empleado
+        public void CambiarEstadoEmpleado(int id, bool activo)
+        {
+            SqlCommand cmd = new SqlCommand("empleado_ocultarydescoultar", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@idusuario", id);
+            cmd.Parameters.AddWithValue("@activo", activo); // Define si es activar o desactivar
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+
         public string Activar(int Id)
         {
             string Rpta = "";
@@ -179,6 +196,71 @@ namespace CapaDatos
             return Rpta;
         }
 
+        public string ObtenerClaveEmpleado(int idEmpleado)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("obtener_clave_empleado", conexion))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar parámetro
+                    cmd.Parameters.AddWithValue("@idusuario", idEmpleado);
+
+                    // Abrir conexión
+                    if (conexion.State != ConnectionState.Open)
+                        conexion.Open();
+
+                    // Ejecutar el comando y leer la respuesta
+                    var resultado = cmd.ExecuteScalar();
+
+                    // Retornar la contraseña si se encuentra
+                    return resultado != null ? resultado.ToString() : null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la clave del empleado: " + ex.Message);
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+        }
+
+        public bool VerificarEmailExistente(string email, int? idEmpleado = null)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("VerificarEmailExistente", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Parámetros del SP
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@IdEmpleado", idEmpleado.HasValue ? (object)idEmpleado.Value : DBNull.Value);
+
+                // Abrir conexión
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
+
+                // Ejecutar el SP y obtener el resultado
+                int existe = Convert.ToInt32(cmd.ExecuteScalar());
+
+                // Retornar true si el correo ya existe
+                return existe > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar el email existente: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar conexión si está abierta
+                if (conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
+        }
 
 
     }

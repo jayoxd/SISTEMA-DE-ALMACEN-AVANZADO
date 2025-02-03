@@ -178,8 +178,8 @@
   <data name="ELINMAAAAAAAAAAAAAARRRRRR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\ELINMAAAAAAAAAAAAAARRRRRR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Productos Verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\Productos Verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LINEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\LINEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="comprobante_verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\comprobante_verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -189,6 +189,9 @@
   </data>
   <data name="CajaTexto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\CajaTexto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SalirSistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\SalirSistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BordeSombreado1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\BordeSombreado1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,11 +211,11 @@
   <data name="Productos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\Productos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cliente xdddddddddddd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\cliente xdddddddddddd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Productos Verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\Productos Verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VENTAPRODUCTOSVERDES" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\VENTAPRODUCTOSVERDES.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="carteritaxd1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\carteritaxd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CXLIENTEEEEEE VERDFFEEEEEEEEEEE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\CXLIENTEEEEEE VERDFFEEEEEEEEEEE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,14 +238,14 @@
   <data name="documento1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\documento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EliminarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\EliminarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="roles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\roles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Informarcion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\Informarcion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Captura de pantalla 2025-01-29 093724" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\Captura de pantalla 2025-01-29 093724.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EliminarProducto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\EliminarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -283,8 +286,11 @@
   <data name="Clientes Verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\Clientes Verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LINEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\LINEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EliminarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\EliminarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="document_480px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\document_480px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_automotive_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\icons8_automotive_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,11 +298,11 @@
   <data name="vehiculobotonxd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\vehiculobotonxd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EditarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\EditarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SobraCajasTotales" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\SobraCajasTotales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VENTAPRODUCTOSVERDES" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\VENTAPRODUCTOSVERDES.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\Editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,11 +310,11 @@
   <data name="vehiculo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\vehiculo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SalirSistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\SalirSistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EditarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\EditarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="carteritaxd1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\carteritaxd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cliente xdddddddddddd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\cliente xdddddddddddd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clientesssss" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\clientesssss.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,7 +325,10 @@
   <data name="rolessssssssssnegro1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Imagenes\rolessssssssssnegro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document_480px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Imagenes\document_480px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Captura de pantalla 2025-01-29 093724_Nero_AI_Background_Remover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\Captura de pantalla 2025-01-29 093724_Nero_AI_Background_Remover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LANMEITRANSP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Imagenes\LANMEITRANSP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
