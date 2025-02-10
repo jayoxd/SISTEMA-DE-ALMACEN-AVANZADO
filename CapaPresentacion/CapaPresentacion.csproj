@@ -155,6 +155,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -199,6 +200,12 @@
     </Compile>
     <Compile Include="FrmAcceso.Designer.cs">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CargarScript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargarScript.Designer.cs">
+      <DependentUpon>CargarScript.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAgregarProve.cs">
       <SubType>Form</SubType>
@@ -372,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargarScript.resx">
+      <DependentUpon>CargarScript.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAgregarProve.resx">
       <DependentUpon>FrmAgregarProve.cs</DependentUpon>

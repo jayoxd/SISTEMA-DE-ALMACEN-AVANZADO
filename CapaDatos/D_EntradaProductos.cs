@@ -163,34 +163,41 @@ namespace CapaDatos
         }
         // método para insertar una entrada con sus detalles
         // Método para insertar una entrada con sus detalles
-        public void InsertarEntrada(E_Entrada entrada)
+        public string InsertarEntrada(E_Entrada entrada)
         {
-            SqlConnection SqlCon = new SqlConnection();
+            string nroDocumentoGenerado = "";
 
-           
-                    SqlCommand cmd = new SqlCommand("sp_InsertarEntradaConDetalles", conexion); // Procedimiento almacenado para editar
+            using (SqlCommand cmd = new SqlCommand("sp_InsertarEntradaConDetalles", conexion))
+            {
+              
                     cmd.CommandType = CommandType.StoredProcedure;
+                    conexion.Open();
 
-                    
-                        conexion.Open();
-
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ProveedorID", entrada.ProveedorID);
                     cmd.Parameters.AddWithValue("@TipoCambio", entrada.TipoCambio);
                     cmd.Parameters.AddWithValue("@Tipo_Comprobante", entrada.TipoComprobante);
                     cmd.Parameters.AddWithValue("@Nro_Comprobante", entrada.NroComprobante);
+                    cmd.Parameters.AddWithValue("@UserCreate", entrada.UserCreate);
+                    cmd.Parameters.AddWithValue("@FechaHoraSys", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@Fecha", entrada.Fecha);
+                    cmd.Parameters.AddWithValue("@Detalles", entrada.Detalles);
 
-                    // Aquí pasamos el valor de "UserCreate", "FechaHoraSys" y "Fecha" (proporcionada por el usuario)
-                    cmd.Parameters.AddWithValue("@UserCreate", entrada.UserCreate);    // Usuario que crea
-                    cmd.Parameters.AddWithValue("@FechaHoraSys", DateTime.Now);       // Fecha y hora actual (del sistema)
-                    cmd.Parameters.AddWithValue("@Fecha", entrada.Fecha); // Fecha de prueba
+                    // Parámetro de salida para recibir el NroDocumento generado
+                    SqlParameter outputParam = new SqlParameter("@NroDocumento", SqlDbType.VarChar, 20)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
 
-                    cmd.Parameters.AddWithValue("@Detalles", entrada.Detalles); // Detalles enviados como tabla
+                    cmd.ExecuteNonQuery();
 
-            cmd.ExecuteNonQuery(); // Ejecutar el procedimiento
-            conexion.Close(); // Cerrar la conexión
-
+                    // Capturar el NroDocumento generado
+                    nroDocumentoGenerado = outputParam.Value.ToString();
+                
+            }
+            return nroDocumentoGenerado;
         }
+
 
 
 
@@ -316,6 +323,9 @@ namespace CapaDatos
                     conexion.Close();
             }
         }
+
+
+
 
 
     }

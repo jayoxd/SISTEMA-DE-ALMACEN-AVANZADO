@@ -78,7 +78,8 @@ namespace CapaPresentacion
 
             try
             {
-                
+                string scriptSQL;
+
                 if (!Update)
                 {
                     if (negocio.ExisteClienteRUC(cliente.dni) && cliente.Idcliente.ToString() != txtClienteID)
@@ -87,17 +88,25 @@ namespace CapaPresentacion
                     return;
                 }
                     // Insertar cliente
+                    scriptSQL = negocio.GenerarScriptInsertar(cliente);
+                    // Insertar cliente
                     negocio.insertandoCliente(cliente);
                     MessageBox.Show("Cliente agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   // MessageBox.Show("Cliente agregado exitosamente.\n\n" + scriptSQL, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
                     // Actualizar cliente
                     // Validar si el RUC ya existe y pertenece a otro proveedor
-                   
+                    // Actualizar cliente
+                    cliente.Idcliente = int.Parse(txtClienteID);
+                    scriptSQL = negocio.GenerarScriptActualizar(cliente);
                     cliente.Idcliente = int.Parse(txtClienteID);
                     negocio.editandoCliente(cliente);
                     MessageBox.Show("Cliente actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Cliente actualizado exitosamente.\n\n" + scriptSQL, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
 
                 this.Close();

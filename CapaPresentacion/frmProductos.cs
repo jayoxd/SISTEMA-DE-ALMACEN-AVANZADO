@@ -132,6 +132,7 @@
                     if (resultado == DialogResult.Yes)
                     {
                         objNegocio.CambiarEstadoProducto(codigoProducto, !estadoActual); // Cambia el estado
+                        objNegocio.GenerarScriptOcultarProducto(codigoProducto, !estadoActual); // Genera el script SQL
                         MessageBox.Show(estadoActual ? "Producto deshabilitado exitosamente." : "Producto habilitado exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Solo actualizar la tabla, no cambiar la vista

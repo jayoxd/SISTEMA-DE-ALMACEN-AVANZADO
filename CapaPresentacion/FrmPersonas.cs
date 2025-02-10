@@ -362,6 +362,7 @@ namespace CapaPresentacion
                         if (resultado == DialogResult.Yes)
                         {
                             objNegocio.CambiarEstadoCliente(clienteID, nuevoEstado);
+                            objNegocio.GenerarScriptOcultarCliente(clienteID, nuevoEstado);
                             MessageBox.Show(
                                 nuevoEstado ? "Cliente habilitado exitosamente." : "Cliente deshabilitado exitosamente.",
                                 "Éxito",

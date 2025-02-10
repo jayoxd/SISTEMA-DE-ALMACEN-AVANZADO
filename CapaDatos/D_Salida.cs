@@ -80,50 +80,55 @@ namespace CapaDatos
 
 
         // método para insertar una salida con sus detalles
-        public string InsertarSalida(E_salida salida)
+    public string InsertarSalida(E_salida salida)
+{
+    string nroDocumentoGenerado = "";
+
+    try
+    {
+        using (SqlCommand cmd = new SqlCommand("sp_InsertarSalidaConDetalles", conexion))
         {
-            string respuesta = "";
-            SqlConnection SqlCon = new SqlConnection();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ClienteID", salida.clienteid);
+            cmd.Parameters.AddWithValue("@Medio", salida.medio);
+            cmd.Parameters.AddWithValue("@Observacion", salida.observacion ?? (object)DBNull.Value); 
+            cmd.Parameters.AddWithValue("@Tipo_venta", salida.tipoVenta);
+            cmd.Parameters.AddWithValue("@Tipo_Comprobante", salida.TipoComprobante);
+            cmd.Parameters.AddWithValue("@Nro_Comprobante", salida.NroComprobante);
+            cmd.Parameters.AddWithValue("@Detalles", salida.Detallessalida);
+            cmd.Parameters.AddWithValue("@Codigo_Pedido", salida.CodigoPedido ?? (object)DBNull.Value); 
+            cmd.Parameters.AddWithValue("@Transporte", salida.Transporte);
+            cmd.Parameters.AddWithValue("@FechaDespacho", salida.FechaDespacho);
+            cmd.Parameters.AddWithValue("@UserCreate", salida.UserCreate);
+            cmd.Parameters.AddWithValue("@FechaHoraSys", DateTime.Now);
+            cmd.Parameters.AddWithValue("@Fecha", salida.Fecha); 
 
-            try
+            // 🔹 Parámetro de salida para capturar el `NroDocumento` generado
+            SqlParameter outputParam = new SqlParameter("@NroDocumento", SqlDbType.VarChar, 20)
             {
-                using (SqlCommand cmd = new SqlCommand("sp_InsertarSalidaConDetalles", conexion))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ClienteID", salida.clienteid);
-                    cmd.Parameters.AddWithValue("@Medio", salida.medio);
-                    cmd.Parameters.AddWithValue("@Observacion", salida.observacion ?? (object)DBNull.Value); // Validar observación nula
-                    cmd.Parameters.AddWithValue("@Tipo_venta", salida.tipoVenta);
-                    cmd.Parameters.AddWithValue("@Tipo_Comprobante", salida.TipoComprobante);
-                    cmd.Parameters.AddWithValue("@Nro_Comprobante", salida.NroComprobante);
-                    cmd.Parameters.AddWithValue("@Detalles", salida.Detallessalida);
-                    // Detalles enviados como tabla
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(outputParam);
 
-                    // Nuevos campos
-                    cmd.Parameters.AddWithValue("@Codigo_Pedido", salida.CodigoPedido ?? (object)DBNull.Value); // Validar nulo
-                    cmd.Parameters.AddWithValue("@Transporte", salida.Transporte);
-                    cmd.Parameters.AddWithValue("@FechaDespacho", salida.FechaDespacho);
+            conexion.Open();
+            cmd.ExecuteNonQuery();
 
-                    // Aquí pasamos el valor de "UserCreate", "FechaHoraSys" y "Fecha" (proporcionada por el usuario)
-                    cmd.Parameters.AddWithValue("@UserCreate", salida.UserCreate);    // Usuario que crea
-                    cmd.Parameters.AddWithValue("@FechaHoraSys", DateTime.Now);       // Fecha y hora actual (del sistema)
-                    cmd.Parameters.AddWithValue("@Fecha", salida.Fecha); // Fecha de prueba
-
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-                    respuesta = "OK";
-                }
-            }
-            catch (Exception ex)
-            {
-                respuesta = "Error: " + ex.Message;
-            }
-            finally
-            {
-                if (conexion.State == ConnectionState.Open) conexion.Close();
-            }
-            return respuesta;
+            // 🔹 Capturar el `NroDocumento` generado después de la ejecución del SP
+            nroDocumentoGenerado = outputParam.Value.ToString();
         }
+    }
+    catch (Exception ex)
+    {
+        nroDocumentoGenerado = "Error: " + ex.Message;
+    }
+    finally
+    {
+        if (conexion.State == ConnectionState.Open) conexion.Close();
+    }
+
+    return nroDocumentoGenerado;  // 🔹 Devolvemos el `NroDocumento` generado
+}
+
         public void EditarSalida(E_salida salida)
         {
             SqlCommand cmd = new SqlCommand("sp_EditarSalidaConDetalles", conexion);

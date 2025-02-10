@@ -7,6 +7,8 @@ using CapaEntidades;
 using CapaDatos;
 using System.Data;
 using System.Windows.Forms;
+using System.Globalization;
+using System.IO;
 
 namespace CapaNegocio
 {
@@ -44,12 +46,11 @@ namespace CapaNegocio
         }
 
         // Método para insertar una nueva salida
-        public void InsertarSalida(E_salida salida)
+        public string InsertarSalida(E_salida salida)
         {
-
-            // Llamamos al método de la capa de datos para insertar la salida
-            objDatos.InsertarSalida(salida);
+            return objDatos.InsertarSalida(salida);  // 🔹 Devuelve el `NroDocumento` generado
         }
+
 
         // Método para obtener los detalles de una salida específica
         public DataSet ObtenerSalidaConDetalles(string nroDocumento)
@@ -109,6 +110,127 @@ namespace CapaNegocio
         {
             return (DataTable)objDatos.EjecutarOpcionSalidas(5);
         }
+
+        public string GenerarScriptInsertar(E_salida salida)
+        {
+            string script = "DECLARE @Detalles type_Detalle_Salida;\n";
+
+            foreach (DataRow fila in salida.Detallessalida.Rows)
+            {
+                script += $@"
+            INSERT INTO @Detalles (CodigoProducto, Lote, Cantidad, Precio, Comision, PrecioVendido, Ganancia, Observacion)
+            VALUES ({FormatearValor(fila["CodigoProducto"].ToString())}, 
+                    {FormatearValor(fila["Lote"].ToString())}, 
+                    {fila["Cantidad"]}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["Precio"]))}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["Comision"]))}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["PrecioVendido"]))}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["Ganancia"]))}, 
+                    {FormatearValor(fila["Observacion"].ToString())});";
+                        }
+
+                        script += $@"
+
+            EXEC sp_InsertarSalidaConDetalles 
+                @ClienteID = {salida.clienteid}, 
+                @Medio = {FormatearValor(salida.medio)}, 
+                @Observacion = {FormatearValor(salida.observacion)}, 
+                @Tipo_venta = {FormatearValor(salida.tipoVenta)}, 
+                @Tipo_Comprobante = {FormatearValor(salida.TipoComprobante)}, 
+                @Nro_Comprobante = {FormatearValor(salida.NroComprobante)}, 
+                @Codigo_Pedido = {FormatearValor(salida.CodigoPedido)}, 
+                @Transporte = {FormatearDecimal(salida.Transporte)}, 
+                @FechaDespacho = '{salida.FechaDespacho:yyyy-MM-dd HH:mm:ss}', 
+                @Fecha = '{salida.Fecha:yyyy-MM-dd}', 
+                @UserCreate = {FormatearValor(salida.UserCreate)}, 
+                @FechaHoraSys = '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', 
+                @NroDocumento = '{salida.NroDocumento}', 
+                @Detalles = @Detalles;";
+
+                        GuardarScriptEnArchivo(script, "InsertarSalida");
+                        return script;
+        }
+        private string FormatearValor(string valor)
+        {
+            return string.IsNullOrEmpty(valor) ? "NULL" : $"'{valor.Replace("'", "''")}'";
+        }
+
+        private string FormatearDecimal(decimal valor)
+        {
+            return valor.ToString(CultureInfo.InvariantCulture);
+        }
+        private void GuardarScriptEnArchivo(string script, string tipoOperacion)
+        {
+            try
+            {
+                // Definir la ruta donde se guardará el archivo
+                string rutaCarpeta = @"C:\RegistrosSQL\";
+
+                // Verificar si la carpeta existe, si no, crearla
+                if (!Directory.Exists(rutaCarpeta))
+                {
+                    Directory.CreateDirectory(rutaCarpeta);
+                }
+
+                // Nombre del archivo con timestamp
+                string nombreArchivo = $"{tipoOperacion}_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
+                string rutaArchivo = Path.Combine(rutaCarpeta, nombreArchivo);
+
+                // Guardar el script en el archivo
+                File.WriteAllText(rutaArchivo, script);
+
+                Console.WriteLine($"Script guardado correctamente en: {rutaArchivo}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar el script: {ex.Message}");
+            }
+        }
+        public string GenerarScriptEditar(E_salida salida)
+        {
+            // Declaramos la tabla @Detalles en SQL
+            string script = "DECLARE @Detalles type_Detalle_Salida;\n";
+
+            // Insertamos los datos en la tabla temporal @Detalles
+            foreach (DataRow fila in salida.Detallessalida.Rows)
+            {
+                script += $@"
+            INSERT INTO @Detalles (CodigoProducto, Lote, Cantidad, Precio, Comision, PrecioVendido, Ganancia, Observacion)
+            VALUES ({FormatearValor(fila["CodigoProducto"].ToString())}, 
+                    {FormatearValor(fila["Lote"].ToString())}, 
+                    {fila["Cantidad"]}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["Precio"]))}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["Comision"]))}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["PrecioVendido"]))}, 
+                    {FormatearDecimal(Convert.ToDecimal(fila["Ganancia"]))}, 
+                    {FormatearValor(fila["Observacion"].ToString())});";
+                        }
+
+                        // Ejecutamos el procedimiento almacenado con la tabla @Detalles
+                        script += $@"
+
+            EXEC sp_EditarSalidaConDetalles 
+                @NroDocumento = '{salida.NroDocumento}', 
+                @ClienteID = {salida.clienteid}, 
+                @Medio = {FormatearValor(salida.medio)}, 
+                @Observacion = {FormatearValor(salida.observacion)}, 
+                @TipoVenta = {FormatearValor(salida.tipoVenta)}, 
+                @Tipo_Comprobante = {FormatearValor(salida.TipoComprobante)}, 
+                @Nro_Comprobante = {FormatearValor(salida.NroComprobante)}, 
+                @Codigo_Pedido = {FormatearValor(salida.CodigoPedido)}, 
+                @Transporte = {FormatearDecimal(salida.Transporte)}, 
+                @FechaDespacho = '{salida.FechaDespacho:yyyy-MM-dd HH:mm:ss}', 
+                @Fecha = '{salida.Fecha:yyyy-MM-dd}', 
+                @UserEdit = {FormatearValor(salida.UserUpdate)}, 
+                @FechaHoraSys = '{DateTime.Now:yyyy-MM-dd HH:mm:ss}', 
+                @Detalles = @Detalles;";
+
+            // Guardar el script en un archivo
+            GuardarScriptEnArchivo(script, "EditarSalida");
+
+            return script;
+        }
+
     }
 
 }

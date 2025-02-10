@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using CapaEntidades;
 using CapaDatos;
 using System.Data;
+using System.IO;
 
 namespace CapaNegocio
 {
    public class N_Proveedores
     {
+        private string rutaCarpeta = @"C:\RegistrosSQL"; // Carpeta donde se guardarán los archivos
 
         D_proveedores objDatos = new D_proveedores();
         E_proveedores entidades = new E_proveedores();
@@ -74,6 +76,75 @@ namespace CapaNegocio
         {
             return (DataTable)objDatos.EjecutarOpcionProveedores(4);
         }
+        public string GenerarScriptInsertar(E_proveedores proveedor)
+        {
+            string script = $@"
+        EXEC InsertarProveedor 
+            @RUC = {FormatearValor(proveedor.Ruc)}, 
+            @Nombre = {FormatearValor(proveedor.Nombre)}, 
+            @Direccion = {FormatearValor(proveedor.Direccion)}, 
+            @Telefono = {FormatearValor(proveedor.Telefono)}, 
+            @Email = {FormatearValor(proveedor.Email)};";
+
+            GuardarScriptEnArchivo(script, "InsertarProveedor");
+            return script;
+        }
+
+        public string GenerarScriptActualizar(E_proveedores proveedor)
+        {
+            string script = $@"
+        EXEC ActualizarProveedor 
+            @ProveedorID = {proveedor.idProveedor}, 
+            @RUC = {FormatearValor(proveedor.Ruc)}, 
+            @Nombre = {FormatearValor(proveedor.Nombre)}, 
+            @Direccion = {FormatearValor(proveedor.Direccion)}, 
+            @Telefono = {FormatearValor(proveedor.Telefono)}, 
+            @Email = {FormatearValor(proveedor.Email)};";
+
+            GuardarScriptEnArchivo(script, "ActualizarProveedor");
+            return script;
+        }
+
+        private void GuardarScriptEnArchivo(string script, string tipoOperacion)
+        {
+            try
+            {
+                // Crear la carpeta si no existe
+                if (!Directory.Exists(rutaCarpeta))
+                {
+                    Directory.CreateDirectory(rutaCarpeta);
+                }
+
+                // Nombre del archivo con fecha y hora
+                string nombreArchivo = $"{tipoOperacion}_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
+                string rutaArchivo = Path.Combine(rutaCarpeta, nombreArchivo);
+
+                // Escribir el script en el archivo
+                File.WriteAllText(rutaArchivo, script);
+
+                Console.WriteLine($"Script guardado en: {rutaArchivo}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar el archivo: {ex.Message}");
+            }
+        }
+
+        private string FormatearValor(string valor)
+        {
+            return string.IsNullOrEmpty(valor) ? "NULL" : $"'{valor.Replace("'", "''")}'";
+        }
+        public string GenerarScriptOcultarProveedor(int proveedorID, bool estado)
+        {
+            string script = $@"
+            EXEC sp_OcultarProveedor 
+                @ProveedorID = {proveedorID}, 
+                @Estado = {(estado ? 1 : 0)};";
+
+            GuardarScriptEnArchivo(script, estado ? "HabilitarProveedor" : "OcultarProveedor");
+            return script;
+        }
+
     }
 }
 //LLAMAMOS A LA CAPA DE DATOS 

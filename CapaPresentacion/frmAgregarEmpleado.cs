@@ -78,6 +78,8 @@ namespace CapaPresentacion
                     {
                        
                         entidades.Clave = txtClave.Text; // Nueva contraseña
+                        negocio.GenerarScriptInsertar(entidades);
+
                         negocio.insertandoEmpleado(entidades);
                         MessageBox.Show("El empleado ha sido agregado correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         EmpleadoAgregado = true;
@@ -96,6 +98,7 @@ namespace CapaPresentacion
                         {
                             entidades.Clave = null; // No actualizar la contraseña
                         }
+                        negocio.GenerarScriptActualizar(entidades, contraseñaModificada);
 
                         negocio.editandoEmpleado(entidades); // Llamar al método de edición
                         MessageBox.Show("El empleado ha sido actualizado correctamente.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);

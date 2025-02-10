@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CapaEntidades;
 using CapaDatos;
 using System.Data;
+using System.IO;
+using System.Globalization;
 
 namespace CapaNegocio
 {
@@ -110,5 +112,96 @@ namespace CapaNegocio
         {
             return objDatos.ObtenerProductoConMasMovimientos(2); // Opción 2: Producto con más entradas
         }
+
+        private string rutaCarpeta = @"C:\RegistrosSQL"; // Carpeta donde se guardarán los archivos
+
+        public string GenerarScriptInsertar(E_productoss producto)
+        {
+            string script = $@"
+        EXEC sp_AgregarProducto 
+            @CodigoProducto = {FormatearValor(producto.CodigoProducto)}, 
+            @DescripcionProducto = {FormatearValor(producto.DescripcionProducto)}, 
+            @Categoria = {FormatearValor(producto.Categoria)}, 
+            @PrecioUnitario = {FormatearDecimal(producto.PrecioUnitario)}, 
+            @StockActual = {producto.StockActual}, 
+            @Estado = {(producto.estado ? "1" : "0")}, 
+            @BASICO = {FormatearDecimal(producto.BASICO)}, 
+            @Saga = {FormatearDecimal(producto.Saga)}, 
+            @Agora = {FormatearDecimal(producto.Agora)}, 
+            @Ripley = {FormatearDecimal(producto.Ripley)}, 
+            @Mayorista_3_5 = {FormatearDecimal(producto.Mayorista_3_5)}, 
+            @Mayorista_X_Caja = {FormatearDecimal(producto.Mayorista_X_Caja)};";
+
+            GuardarScriptEnArchivo(script, "InsertarProducto");
+            return script;
+        }
+
+        public string GenerarScriptActualizar(E_productoss producto)
+        {
+            string script = $@"
+        EXEC sp_ActualizarProducto 
+            @CodigoProducto = {FormatearValor(producto.CodigoProducto)}, 
+            @DescripcionProducto = {FormatearValor(producto.DescripcionProducto)}, 
+            @Categoria = {FormatearValor(producto.Categoria)}, 
+            @PrecioUnitario = {FormatearDecimal(producto.PrecioUnitario)}, 
+            @StockActual = {producto.StockActual}, 
+            @Estado = {(producto.estado ? "1" : "0")}, 
+            @BASICO = {FormatearDecimal(producto.BASICO)}, 
+            @Saga = {FormatearDecimal(producto.Saga)}, 
+            @Agora = {FormatearDecimal(producto.Agora)}, 
+            @Ripley = {FormatearDecimal(producto.Ripley)}, 
+            @Mayorista_3_5 = {FormatearDecimal(producto.Mayorista_3_5)}, 
+            @Mayorista_X_Caja = {FormatearDecimal(producto.Mayorista_X_Caja)};";
+
+            GuardarScriptEnArchivo(script, "ActualizarProducto");
+            return script;
+        }
+
+        private void GuardarScriptEnArchivo(string script, string tipoOperacion)
+        {
+            try
+            {
+                // Crear la carpeta si no existe
+                if (!Directory.Exists(rutaCarpeta))
+                {
+                    Directory.CreateDirectory(rutaCarpeta);
+                }
+
+                // Nombre del archivo con fecha y hora
+                string nombreArchivo = $"{tipoOperacion}_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
+                string rutaArchivo = Path.Combine(rutaCarpeta, nombreArchivo);
+
+                // Escribir el script en el archivo
+                File.WriteAllText(rutaArchivo, script);
+
+                Console.WriteLine($"Script guardado en: {rutaArchivo}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar el archivo: {ex.Message}");
+            }
+        }
+
+        private string FormatearValor(string valor)
+        {
+            return string.IsNullOrEmpty(valor) ? "NULL" : $"'{valor.Replace("'", "''")}'";
+        }
+        private string FormatearDecimal(decimal? valor)
+        {
+            return valor.HasValue ? valor.Value.ToString(CultureInfo.InvariantCulture) : "NULL";
+        }
+
+
+        public string GenerarScriptOcultarProducto(string codigoProducto, bool estado)
+        {
+            string script = $@"
+            EXEC sp_CambiarEstadoProducto 
+                @CodigoProducto = '{codigoProducto}', 
+                @Estado = {(estado ? 1 : 0)};";
+
+            GuardarScriptEnArchivo(script, estado ? "HabilitarProducto" : "OcultarProducto");
+            return script;
+        }
+
     }
 }

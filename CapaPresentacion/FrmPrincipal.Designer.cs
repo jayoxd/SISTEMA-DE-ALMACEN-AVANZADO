@@ -32,17 +32,18 @@ namespace CapaPresentacion
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.Header = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.Salir = new System.Windows.Forms.PictureBox();
             this.Wrapper = new System.Windows.Forms.Panel();
             this.lblUSER = new System.Windows.Forms.Label();
             this.sidebar = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtcreador = new System.Windows.Forms.Label();
-            this.Salir = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnclientes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnproveedores = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnReportes = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtcreador = new System.Windows.Forms.Label();
             this.flecha = new System.Windows.Forms.PictureBox();
             this.btnAcceso = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnServicio = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -52,16 +53,15 @@ namespace CapaPresentacion
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnKardex = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Header.SuspendLayout();
-            this.sidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
+            this.sidebar.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flecha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Header
@@ -72,7 +72,7 @@ namespace CapaPresentacion
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(270, 0);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(324, 60);
+            this.Header.Size = new System.Drawing.Size(1157, 60);
             this.Header.TabIndex = 1;
             // 
             // label1
@@ -86,13 +86,25 @@ namespace CapaPresentacion
             this.label1.TabIndex = 1;
             this.label1.Text = "PROYECT V02";
             // 
+            // Salir
+            // 
+            this.Salir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Salir.Image = global::CapaPresentacion.Properties.Resources.SalirSistema;
+            this.Salir.Location = new System.Drawing.Point(1110, 12);
+            this.Salir.Name = "Salir";
+            this.Salir.Size = new System.Drawing.Size(35, 34);
+            this.Salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Salir.TabIndex = 0;
+            this.Salir.TabStop = false;
+            this.Salir.Click += new System.EventHandler(this.Salir_Click);
+            // 
             // Wrapper
             // 
             this.Wrapper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
             this.Wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Wrapper.Location = new System.Drawing.Point(270, 60);
             this.Wrapper.Name = "Wrapper";
-            this.Wrapper.Size = new System.Drawing.Size(324, 293);
+            this.Wrapper.Size = new System.Drawing.Size(1157, 644);
             this.Wrapper.TabIndex = 2;
             // 
             // lblUSER
@@ -131,8 +143,27 @@ namespace CapaPresentacion
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(0, 0);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(270, 353);
+            this.sidebar.Size = new System.Drawing.Size(270, 704);
             this.sidebar.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(55, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(161, 100);
+            this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.LANMEITRANSP;
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(161, 135);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -144,49 +175,6 @@ namespace CapaPresentacion
             this.label2.TabIndex = 21;
             this.label2.Text = "DISEÑO WEB";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(63, 863);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(243, 33);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "BIENVENIDO";
-            // 
-            // txtcreador
-            // 
-            this.txtcreador.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcreador.ForeColor = System.Drawing.Color.White;
-            this.txtcreador.Location = new System.Drawing.Point(11, 877);
-            this.txtcreador.Name = "txtcreador";
-            this.txtcreador.Size = new System.Drawing.Size(243, 58);
-            this.txtcreador.TabIndex = 14;
-            this.txtcreador.Text = "LUBRICENTRO";
-            this.txtcreador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Salir
-            // 
-            this.Salir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Salir.Image = global::CapaPresentacion.Properties.Resources.SalirSistema;
-            this.Salir.Location = new System.Drawing.Point(277, 12);
-            this.Salir.Name = "Salir";
-            this.Salir.Size = new System.Drawing.Size(35, 34);
-            this.Salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Salir.TabIndex = 0;
-            this.Salir.TabStop = false;
-            this.Salir.Click += new System.EventHandler(this.Salir_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.LANMEITRANSP;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(161, 135);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
             // 
             // btnclientes
             // 
@@ -295,6 +283,27 @@ namespace CapaPresentacion
             this.btnReportes.Textcolor = System.Drawing.Color.White;
             this.btnReportes.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportes.Click += new System.EventHandler(this.bunifuFlatButton1_Click_1);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(63, 863);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(243, 33);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "BIENVENIDO";
+            // 
+            // txtcreador
+            // 
+            this.txtcreador.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcreador.ForeColor = System.Drawing.Color.White;
+            this.txtcreador.Location = new System.Drawing.Point(11, 877);
+            this.txtcreador.Name = "txtcreador";
+            this.txtcreador.Size = new System.Drawing.Size(243, 58);
+            this.txtcreador.TabIndex = 14;
+            this.txtcreador.Text = "LUBRICENTRO";
+            this.txtcreador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flecha
             // 
@@ -519,21 +528,12 @@ namespace CapaPresentacion
             this.btnKardex.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKardex.Click += new System.EventHandler(this.btnKardex_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(243)))), ((int)(((byte)(239)))));
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(55, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(161, 100);
-            this.panel1.TabIndex = 0;
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(594, 353);
+            this.ClientSize = new System.Drawing.Size(1427, 704);
             this.Controls.Add(this.Wrapper);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.sidebar);
@@ -544,14 +544,14 @@ namespace CapaPresentacion
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.Header.ResumeLayout(false);
             this.Header.PerformLayout();
-            this.sidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).EndInit();
+            this.sidebar.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.flecha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -326,6 +326,7 @@ namespace CapaPresentacion
                     if (resultado == DialogResult.Yes)
                     {
                         objNegocio.CambiarEstadoProveedor(proveedorID, nuevoEstado);
+                        objNegocio.GenerarScriptOcultarProveedor(proveedorID, nuevoEstado);
                         MessageBox.Show(
                             nuevoEstado ? "Proveedor habilitado exitosamente." : "Proveedor deshabilitado exitosamente.",
                             "Éxito",

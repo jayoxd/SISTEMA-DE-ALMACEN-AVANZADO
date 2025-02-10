@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using CapaEntidades;
 using CapaDatos;
 using System.Data;
+using System.IO;
 
 namespace CapaNegocio
 {
     public class N_Clientes
     {
+        private string rutaCarpeta = @"C:\RegistrosSQL"; // Ruta donde se guardarán los archivos
 
         D_Clientes objDatos = new D_Clientes();
 
@@ -35,8 +37,72 @@ namespace CapaNegocio
             objDatos.ActualizarCliente(Clientez);
         }
 
+        public string GenerarScriptInsertar(E_Clientes cliente)
+        {
+            string script = $@"
+        EXEC InsertarClientes 
+        @DNI = {FormatearValor(cliente.dni)}, 
+        @Nombre = {FormatearValor(cliente.Nombre)}, 
+        @Direccion = {FormatearValor(cliente.Direccion)}, 
+        @Telefono = {FormatearValor(cliente.Telefono)}, 
+        @Email = {FormatearValor(cliente.Email)}, 
+        @OrigenCliente = {FormatearValor(cliente.origencliente)}, 
+        @Departamento = {FormatearValor(cliente.departamento)}, 
+        @Provincia = {FormatearValor(cliente.provincia)}, 
+        @Distrito = {FormatearValor(cliente.distrito)}, 
+        @GoogleMaps = {FormatearValor(cliente.googlemaps)};";
+            GuardarScriptEnArchivo(script, "InsertarCliente");
+            return script;
+        }
 
+        public string GenerarScriptActualizar(E_Clientes cliente)
+        {
+            string script = $@"
+        EXEC ActualizarCliente 
+        @ClienteID = {cliente.Idcliente}, 
+        @DNI = {FormatearValor(cliente.dni)}, 
+        @Nombre = {FormatearValor(cliente.Nombre)}, 
+        @Direccion = {FormatearValor(cliente.Direccion)}, 
+        @Telefono = {FormatearValor(cliente.Telefono)}, 
+        @Email = {FormatearValor(cliente.Email)}, 
+        @OrigenCliente = {FormatearValor(cliente.origencliente)}, 
+        @Departamento = {FormatearValor(cliente.departamento)}, 
+        @Provincia = {FormatearValor(cliente.provincia)}, 
+        @Distrito = {FormatearValor(cliente.distrito)}, 
+        @GoogleMaps = {FormatearValor(cliente.googlemaps)};";
+            GuardarScriptEnArchivo(script, "ActualizarCliente");
+            return script;
+        }
 
+        // Función para formatear valores, reemplazando valores vacíos con NULL
+        private string FormatearValor(string valor)
+        {
+            return string.IsNullOrEmpty(valor) ? "NULL" : $"'{valor.Replace("'", "''")}'";
+        }
+        private void GuardarScriptEnArchivo(string script, string tipoOperacion)
+        {
+            try
+            {
+                // Crear la carpeta si no existe
+                if (!Directory.Exists(rutaCarpeta))
+                {
+                    Directory.CreateDirectory(rutaCarpeta);
+                }
+
+                // Nombre del archivo con fecha y hora
+                string nombreArchivo = $"{tipoOperacion}_{DateTime.Now:yyyyMMdd_HHmmss}.sql";
+                string rutaArchivo = Path.Combine(rutaCarpeta, nombreArchivo);
+
+                // Escribir el script en el archivo
+                File.WriteAllText(rutaArchivo, script);
+
+                Console.WriteLine($"Script guardado en: {rutaArchivo}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar el archivo: {ex.Message}");
+            }
+        }
 
         public int ObtenerClientesActivos()
         {
@@ -107,6 +173,18 @@ namespace CapaNegocio
         {
             return (DataTable)objDatos.EjecutarOpcionClientes(4);
         }
+
+        public string GenerarScriptOcultarCliente(int clienteID, bool estado)
+        {
+        string script = $@"
+            EXEC sp_OcultarCliente 
+            @ClienteID = {clienteID}, 
+            @Estado = {(estado ? 1 : 0)};";
+
+            GuardarScriptEnArchivo(script, estado ? "HabilitarCliente" : "OcultarCliente");
+            return script;
+        }
+
 
     }
 }

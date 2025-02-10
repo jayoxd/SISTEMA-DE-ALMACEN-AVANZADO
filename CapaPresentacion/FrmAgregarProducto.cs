@@ -121,6 +121,8 @@ namespace CapaPresentacion
                 {
                     // Llamar al método para insertar el producto
                     negocio.insertandoproductos(entidades);
+                    negocio.GenerarScriptInsertar(entidades);
+
                     MessageBox.Show("Producto y precios agregados correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else // Actualización
@@ -130,6 +132,8 @@ namespace CapaPresentacion
                         entidades.PrecioUnitario = Convert.ToDecimal(txtPrecio.Text);
                         entidades.StockActual = Convert.ToInt32(txtStocP.Text);
                     negocio.editandoProducto(entidades);
+                    negocio.GenerarScriptActualizar(entidades);
+
                     MessageBox.Show("Producto y precios actualizados correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

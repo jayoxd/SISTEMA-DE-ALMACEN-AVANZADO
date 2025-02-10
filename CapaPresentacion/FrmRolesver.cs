@@ -237,6 +237,7 @@ namespace CapaPresentacion
                 if (resultado == DialogResult.Yes)
                 {
                     objuser.CambiarEstadoEmpleado(empleadoId, !estadoActual); // Cambiar el estado en la base de datos
+                    objuser.GenerarScriptOcultarEmpleado(empleadoId, !estadoActual); // Generar script SQL
                     MessageBox.Show(estadoActual ? "Empleado desactivado exitosamente." : "Empleado activado exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (mostrandoActivos) MostrarEmpleadosActivos();
                     else MostrarEmpleadosInactivos();

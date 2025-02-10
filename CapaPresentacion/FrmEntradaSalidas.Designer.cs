@@ -70,6 +70,9 @@ namespace CapaPresentacion
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btncargarscript = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnComprobante = new Bunifu.Framework.UI.BunifuImageButton();
             this.label8 = new System.Windows.Forms.Label();
@@ -109,6 +112,7 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btncargarscript)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnComprobante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExportarExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
@@ -530,6 +534,9 @@ namespace CapaPresentacion
             // 
             this.panel9.BackgroundImage = global::CapaPresentacion.Properties.Resources.SombraPanelProductos;
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel9.Controls.Add(this.label10);
+            this.panel9.Controls.Add(this.btncargarscript);
+            this.panel9.Controls.Add(this.label12);
             this.panel9.Controls.Add(this.label5);
             this.panel9.Controls.Add(this.btnComprobante);
             this.panel9.Controls.Add(this.label8);
@@ -550,6 +557,44 @@ namespace CapaPresentacion
             this.panel9.Size = new System.Drawing.Size(1231, 750);
             this.panel9.TabIndex = 4;
             this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(946, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 18);
+            this.label10.TabIndex = 112;
+            this.label10.Text = "script";
+            // 
+            // btncargarscript
+            // 
+            this.btncargarscript.BackColor = System.Drawing.Color.Transparent;
+            this.btncargarscript.Image = ((System.Drawing.Image)(resources.GetObject("btncargarscript.Image")));
+            this.btncargarscript.ImageActive = null;
+            this.btncargarscript.Location = new System.Drawing.Point(942, 16);
+            this.btncargarscript.Name = "btncargarscript";
+            this.btncargarscript.Size = new System.Drawing.Size(48, 49);
+            this.btncargarscript.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btncargarscript.TabIndex = 111;
+            this.btncargarscript.TabStop = false;
+            this.btncargarscript.Zoom = 10;
+            this.btncargarscript.Click += new System.EventHandler(this.btncargarscript_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(939, 68);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 18);
+            this.label12.TabIndex = 110;
+            this.label12.Text = " Cargar";
             // 
             // label5
             // 
@@ -816,6 +861,7 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btncargarscript)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnComprobante)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExportarExcel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
@@ -878,5 +924,8 @@ namespace CapaPresentacion
         private Label label5;
         private Bunifu.Framework.UI.BunifuImageButton btnComprobante;
         private Label label8;
+        private Label label10;
+        private Bunifu.Framework.UI.BunifuImageButton btncargarscript;
+        private Label label12;
     }
 }

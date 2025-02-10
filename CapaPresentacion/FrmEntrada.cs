@@ -461,6 +461,12 @@ namespace CapaPresentacion
                     return;
                 }
 
+                // Validar si los productos seleccionados tienen stock disponible
+                if (!ValidarStockProductos())
+                {
+                    return; // Si la validación falla, no continuar con el registro
+                }
+
                 // Validar que el número de reporte sea válido
                 if (string.IsNullOrWhiteSpace(txbReporteServicio.Text) || !int.TryParse(F_Variables.pruebatodox, out int reporteId) || reporteId <= 0)
                 {
@@ -530,9 +536,15 @@ namespace CapaPresentacion
                     N_Entrada objDatos = new N_Entrada();
 
                     // Llamada a la capa de negocio para editar la entrada
-                    objDatos.InsertarEntrada(entidades);
-                    
-                        MessageBox.Show("El servicio se registró correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string nroDocumentoGenerado = objDatos.InsertarEntrada(entidades);
+
+                    // 🔹 Asignarlo a la entidad
+                    entidades.NroDocumento = nroDocumentoGenerado;
+
+                    // 🔹 Generar el script SQL con el `NroDocumento` correcto
+                    objDatos.GenerarScriptInsertar(entidades);
+
+                    MessageBox.Show("La entrada se registró correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         RestablecerFormulario();
                     btnGuardarServicio.ButtonText = "Registrar Entrada";
 
@@ -558,7 +570,8 @@ namespace CapaPresentacion
 
                     // Llamada a la capa de negocio para editar la entrada
                     objDatos.EditarEntrada(entidades);
-
+                    objDatos.GenerarScriptEditar(entidades);
+                    
                     MessageBox.Show("La entrada se editó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RestablecerFormulario();
                     btnGuardarServicio.ButtonText = "Registrar Entrada";
@@ -824,6 +837,32 @@ namespace CapaPresentacion
         {
 
         }
+
+
+        private bool ValidarStockProductos()
+        {
+            // Verificar si el proveedor es "Traslado Interno" o "Devolución a Proveedor"
+            string proveedorSeleccionado = F_Variables.RUC;
+            if (proveedorSeleccionado == "00000000000" || proveedorSeleccionado == "00000000007")
+            {
+                foreach (DataRow fila in DtDetalle.Rows)
+                {
+                    string codigoProducto = fila["CodigoProducto"].ToString();
+                    // Obtener el stock actual del producto
+                    int stockActual = objProductos.ObtenerStockActual(codigoProducto);
+
+                    // Si el stock es 0, mostrar un mensaje de error
+                    if (stockActual == 0)
+                    {
+                        MessageBox.Show($"El producto con código '{codigoProducto}' tiene stock 0, no se puede registrar un traslado interno o devolucion", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false; // Indicar que la validación falló
+                    }
+                }
+            }
+
+            return true; // Si todos los productos tienen stock disponible, la validación pasa
+        }
+
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {

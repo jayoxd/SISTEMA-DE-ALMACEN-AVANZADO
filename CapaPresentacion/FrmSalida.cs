@@ -305,21 +305,44 @@ namespace CapaPresentacion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            FrmClientes1 frm = new FrmClientes1();
-            frm.ShowDialog();
 
+            FrmClientes1 frm = new FrmClientes1();
+            frm.ShowDialog(); // Muestra el formulario de selección de cliente
+
+            // Asignamos los datos seleccionados en el formulario de cliente
             dni.Text = F_Variables.DNI;
             nombrecli.Text = F_Variables.Nombre;
             ubigeo.Text = F_Variables.Ubigeo;
             origencliente.Text = F_Variables.OrigenCliente;
 
-            bool clienteEsInterno = dni.Text != "00000001";
-            configurarMedio(clienteEsInterno);
+            // Verifica que F_Variables esté actualizando correctamente
+            MessageBox.Show($"OrigenCliente: {F_Variables.OrigenCliente}");
 
-            tipoventa.Text = clienteEsInterno ? "Venta Interna" : "Venta Externa";
+            // Asignamos la lógica de tipo de venta según el origen del cliente
+            if (F_Variables.OrigenCliente == "INTERNO")
+            {
+                configurarTipoVenta(true); // Venta Interna
+                configurarMedio(true); // Medios Internos
+            }
+            else
+            {
+                configurarTipoVenta(false); // Venta Externa
+                configurarMedio(false); // Medios Externos
+            }
+
         }
 
+        private void configurarTipoVenta(bool esInterno)
+        {
+            // Solo asignar el valor una vez
+            if (tipoventa.Text != (esInterno ? "Venta Interna" : "Venta Externa"))
+            {
+                tipoventa.Text = esInterno ? "Venta Interna" : "Venta Externa";
+            }
 
+            // Verifica que el valor haya sido asignado correctamente
+            MessageBox.Show($"Después de asignar el valor: {tipoventa.Text}");
+        }
 
 
         private void dgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -489,23 +512,7 @@ namespace CapaPresentacion
             dgvDetalle.Columns["Cantidad"].ValueType = typeof(int); // Asegura que sea tipo entero
         }
 
-        // Método para validar la cantidad
-        private string ValidarCantidad(string valorCelda)
-        {
-            if (int.TryParse(valorCelda, out int cantidad))
-            {
-                if (cantidad <= 0) return "La cantidad debe ser un número mayor a cero.";
-                if (cantidad > 1000) return "La cantidad ingresada es demasiado alta.";
-            }
-            else
-            {
-                return "Ingrese un valor numérico válido para la cantidad.";
-            }
-            return string.Empty; // Sin errores
-        }
-
-        // Evento para restaurar valores en caso de error
-
+      
 
         private void dgvDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -716,15 +723,22 @@ namespace CapaPresentacion
                 if (string.IsNullOrWhiteSpace(salida.NroDocumento)) // Registro nuevo
                 {
                     salida.UserCreate = Idusuario.ToString();
-                    objNegocio.InsertarSalida(salida);
+                    // 🔹 Insertar la salida y obtener el `NroDocumento` generado
+                    salida.NroDocumento = objNegocio.InsertarSalida(salida);
+
+                    // 🔹 Generar el script SQL con el `NroDocumento` correcto
+                    objNegocio.GenerarScriptInsertar(salida);
                     MessageBox.Show("La salida se guardó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnGuardarServicio.Text = "Registrar Salida";
 
                 }
                 else // Edición
                 {
+                    // 🔹 Generamos el script SQL con los cambios
+                    objNegocio.GenerarScriptEditar(salida);
                     salida.UserUpdate = Idusuario.ToString();
                     objNegocio.EditarSalida(salida);
+
                     MessageBox.Show("La salida se actualizó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnGuardarServicio.Text = "Registrar Salida";
 
@@ -929,11 +943,12 @@ namespace CapaPresentacion
         }
 
 
+
         private void configurarVentaInterna()
         {
             try
             {
-                DataTable dtMedioInterno = objNegocio.ListaSalidamedioint(); // Método que devuelve medios internos
+                DataTable dtMedioInterno = objNegocio.ListaSalidamedioint(); // Obtener medios para clientes internos
 
                 if (dtMedioInterno == null || dtMedioInterno.Rows.Count == 0)
                 {
@@ -946,7 +961,7 @@ namespace CapaPresentacion
                 cmb_medio.DataSource = dtMedioInterno;
                 cmb_medio.DisplayMember = "Descripcion";
                 cmb_medio.ValueMember = "IDtipoventa";
-                cmb_medio.SelectedIndex = -1; // Sin selección inicial
+                cmb_medio.SelectedIndex = -1; // No seleccionar nada por defecto
                 cmb_medio.Enabled = true;
             }
             catch (Exception ex)
@@ -959,7 +974,7 @@ namespace CapaPresentacion
         {
             try
             {
-                DataTable dtMedioExterno = objNegocio.ListaSalidamedio(false); // Método que devuelve medios externos
+                DataTable dtMedioExterno = objNegocio.ListaSalidamedio(false); // Obtener medios para clientes externos
 
                 if (dtMedioExterno == null || dtMedioExterno.Rows.Count == 0)
                 {
@@ -972,7 +987,7 @@ namespace CapaPresentacion
                 cmb_medio.DataSource = dtMedioExterno;
                 cmb_medio.DisplayMember = "Descripcion";
                 cmb_medio.ValueMember = "IDtipoventa";
-                cmb_medio.SelectedIndex = -1; // Sin selección inicial
+                cmb_medio.SelectedIndex = -1; // No seleccionar nada por defecto
                 cmb_medio.Enabled = true;
             }
             catch (Exception ex)
@@ -980,8 +995,6 @@ namespace CapaPresentacion
                 MessageBox.Show($"Error al configurar medios externos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         private void configurarMedio(bool esInterno)
         {
@@ -994,7 +1007,6 @@ namespace CapaPresentacion
                 configurarVentaExterna();
             }
         }
-
 
 
 

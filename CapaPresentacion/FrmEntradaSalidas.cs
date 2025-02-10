@@ -701,6 +701,15 @@ namespace CapaPresentacion
                 MessageBox.Show("Error al generar el comprobante: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btncargarscript_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario FrmCargarScript
+            CargarScript formularioScript = new CargarScript();
+
+            // Mostrar el formulario para cargar y ejecutar el script
+            formularioScript.ShowDialog();
+        }
     }
 
 }

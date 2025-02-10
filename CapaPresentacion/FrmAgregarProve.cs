@@ -84,6 +84,8 @@ namespace CapaPresentacion
                     }
                     // Insertar cliente
                     negocio.insertandoProveedor(proveedor);
+                    negocio.GenerarScriptInsertar(proveedor);
+
                     MessageBox.Show("Proveedor agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -91,6 +93,8 @@ namespace CapaPresentacion
                     // Actualizar cliente
                     proveedor.idProveedor = int.Parse(txtProveedorID);
                     negocio.actualizarproveedor(proveedor);
+                    negocio.GenerarScriptActualizar(proveedor);
+
                     MessageBox.Show("Proveedor actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
