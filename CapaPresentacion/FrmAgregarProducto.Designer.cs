@@ -217,6 +217,7 @@ namespace CapaPresentacion
             this.txtPrecio.Size = new System.Drawing.Size(94, 15);
             this.txtPrecio.TabIndex = 55;
             this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress_1);
             // 
             // txtNombreProducto
             // 
@@ -411,6 +412,7 @@ namespace CapaPresentacion
             this.txbPrecioAnt.Name = "txbPrecioAnt";
             this.txbPrecioAnt.Size = new System.Drawing.Size(94, 15);
             this.txbPrecioAnt.TabIndex = 72;
+            this.txbPrecioAnt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPrecioAnt_KeyPress);
             // 
             // pictureBox4
             // 

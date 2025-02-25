@@ -188,15 +188,7 @@ namespace CapaPresentacion
                 TablaPRODUCTOS.Columns["FechaDespacho"].DataPropertyName = "FechaDespacho";
                 TablaPRODUCTOS.Columns["FechaDespacho"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
-                // Agregar la columna "Observación" solo en salidas
-                var colObservacion = new DataGridViewTextBoxColumn
-                {
-                    Name = "Observacion",
-                    HeaderText = "Observación",
-                    DataPropertyName = "Observacion",
-                    Width = 200 // Puedes ajustar el ancho según tus necesidades
-                };
-                TablaPRODUCTOS.Columns.Add(colObservacion);
+             
             }
             else // Configuración exclusiva para entradas
             {
@@ -206,6 +198,9 @@ namespace CapaPresentacion
 
                 TablaPRODUCTOS.Columns.Add("TipoCambio", "TipoCambio");
                 TablaPRODUCTOS.Columns["TipoCambio"].DataPropertyName = "TipoCambio";
+
+              
+                
             }
             if (!TablaPRODUCTOS.Columns.Contains("ProveedorID"))
             {
@@ -233,6 +228,9 @@ namespace CapaPresentacion
             TablaPRODUCTOS.Columns.Add("FechaHoraSys", "Fecha y Hora Sistema");
             TablaPRODUCTOS.Columns["FechaHoraSys"].DataPropertyName = "FechaHoraSys";
             TablaPRODUCTOS.Columns["FechaHoraSys"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm"; // Formato de fecha y hora
+
+            TablaPRODUCTOS.Columns.Add("observacion", "Observación");
+            TablaPRODUCTOS.Columns["observacion"].DataPropertyName = "observacion";
 
             // Configuración adicional de las columnas
             foreach (DataGridViewColumn column in TablaPRODUCTOS.Columns)
@@ -631,6 +629,8 @@ namespace CapaPresentacion
                         {
                             workbook.SaveAs(saveFileDialog.FileName);
                             MessageBox.Show("Reporte exportado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Abrir el archivo Excel automáticamente
+                            System.Diagnostics.Process.Start(saveFileDialog.FileName);
                         }
                     }
                 }

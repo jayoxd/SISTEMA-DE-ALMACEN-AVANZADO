@@ -114,6 +114,7 @@ namespace CapaPresentacion
             this.txtdniruc.Name = "txtdniruc";
             this.txtdniruc.Size = new System.Drawing.Size(202, 17);
             this.txtdniruc.TabIndex = 141;
+            this.txtdniruc.TextChanged += new System.EventHandler(this.txtdniruc_TextChanged);
             this.txtdniruc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdniruc_KeyPress);
             // 
             // txtnombre

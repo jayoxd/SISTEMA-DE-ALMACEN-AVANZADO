@@ -164,7 +164,7 @@ namespace CapaNegocio
             try
             {
                 // Definir la ruta donde se guardará el archivo
-                string rutaCarpeta = @"C:\RegistrosSQL\";
+                string rutaCarpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScriptLanmei", "RegistrosSQL");
 
                 // Verificar si la carpeta existe, si no, crearla
                 if (!Directory.Exists(rutaCarpeta))

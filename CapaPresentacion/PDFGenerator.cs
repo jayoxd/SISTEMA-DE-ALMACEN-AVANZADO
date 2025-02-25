@@ -128,7 +128,9 @@ public class PDFGenerator
             tabla.AddCell(fila["DescripcionProducto"].ToString());
 
             // Crear celda para PrecioCompra y centrarla
-            PdfPCell precioCompraCell = new PdfPCell(new Phrase(Convert.ToDecimal(fila["PrecioCompra"]).ToString("S/. 0.00")));
+            decimal precioCompra = Convert.ToDecimal(fila["PrecioCompra"]);
+            string precioCompraFormato = precioCompra == 0 ? "$0" : precioCompra.ToString("S/. 0.0");
+            PdfPCell precioCompraCell = new PdfPCell(new Phrase(precioCompraFormato));
             precioCompraCell.HorizontalAlignment = Element.ALIGN_CENTER; // Centrado
             tabla.AddCell(precioCompraCell);
 
@@ -137,10 +139,12 @@ public class PDFGenerator
             cantidadCell.HorizontalAlignment = Element.ALIGN_CENTER; // Centrado
             tabla.AddCell(cantidadCell);
 
-            decimal importe = Convert.ToInt32(fila["Cantidad"]) * Convert.ToDecimal(fila["PrecioCompra"]);
+            // Calcular el importe
+            decimal importe = Convert.ToInt32(fila["Cantidad"]) * precioCompra;
+            string importeFormato = importe == 0 ? "$0" : importe.ToString("S/. 0.0");
 
             // Crear celda para Importe y centrarla
-            PdfPCell importeCell = new PdfPCell(new Phrase(importe.ToString("S/. 0.00")));
+            PdfPCell importeCell = new PdfPCell(new Phrase(importeFormato));
             importeCell.HorizontalAlignment = Element.ALIGN_CENTER; // Centrado
             tabla.AddCell(importeCell);
         }
@@ -174,6 +178,18 @@ public class PDFGenerator
 
         // Informar al usuario que el PDF fue generado
         Console.WriteLine("Comprobante generado correctamente en: " + rutaArchivo);
+        // Abrir el archivo PDF automáticamente
+        try
+        {
+            // Usar Process.Start para abrir el archivo PDF con el programa predeterminado
+            System.Diagnostics.Process.Start(rutaArchivo);
+        }
+        catch (Exception ex)
+        {
+            // Manejar cualquier error que pueda ocurrir al intentar abrir el archivo
+            Console.WriteLine("Error al intentar abrir el archivo PDF: " + ex.Message);
+        }
+
     }
 
 

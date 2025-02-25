@@ -61,9 +61,11 @@ namespace CapaPresentacion
             this.txtRutaScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.txtRutaScript.ForeColor = System.Drawing.Color.Gray;
             this.txtRutaScript.Location = new System.Drawing.Point(26, 86);
+            this.txtRutaScript.Multiline = true;
             this.txtRutaScript.Name = "txtRutaScript";
-            this.txtRutaScript.Size = new System.Drawing.Size(475, 17);
+            this.txtRutaScript.Size = new System.Drawing.Size(836, 172);
             this.txtRutaScript.TabIndex = 139;
+            this.txtRutaScript.TextChanged += new System.EventHandler(this.txtRutaScript_TextChanged);
             // 
             // PanelCliente
             // 
@@ -73,7 +75,7 @@ namespace CapaPresentacion
             this.PanelCliente.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelCliente.Location = new System.Drawing.Point(0, 0);
             this.PanelCliente.Name = "PanelCliente";
-            this.PanelCliente.Size = new System.Drawing.Size(523, 39);
+            this.PanelCliente.Size = new System.Drawing.Size(882, 39);
             this.PanelCliente.TabIndex = 137;
             // 
             // label1
@@ -89,7 +91,7 @@ namespace CapaPresentacion
             // pictureBox14
             // 
             this.pictureBox14.Image = global::CapaPresentacion.Properties.Resources.CerrarForm;
-            this.pictureBox14.Location = new System.Drawing.Point(486, 3);
+            this.pictureBox14.Location = new System.Drawing.Point(828, 0);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(34, 36);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -111,9 +113,9 @@ namespace CapaPresentacion
             this.label2.ForeColor = System.Drawing.Color.Gray;
             this.label2.Location = new System.Drawing.Point(15, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 18);
+            this.label2.Size = new System.Drawing.Size(58, 18);
             this.label2.TabIndex = 130;
-            this.label2.Text = "RUTA";
+            this.label2.Text = "RUTAS";
             // 
             // Movervehiculo
             // 
@@ -149,7 +151,7 @@ namespace CapaPresentacion
             this.pictureBox7.Image = global::CapaPresentacion.Properties.Resources.CajaTexto;
             this.pictureBox7.Location = new System.Drawing.Point(15, 73);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(499, 44);
+            this.pictureBox7.Size = new System.Drawing.Size(860, 199);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 138;
             this.pictureBox7.TabStop = false;
@@ -175,7 +177,7 @@ namespace CapaPresentacion
             this.btnAgregarEmpleado.IconVisible = true;
             this.btnAgregarEmpleado.IconZoom = 60D;
             this.btnAgregarEmpleado.IsTab = false;
-            this.btnAgregarEmpleado.Location = new System.Drawing.Point(160, 131);
+            this.btnAgregarEmpleado.Location = new System.Drawing.Point(26, 290);
             this.btnAgregarEmpleado.Name = "btnAgregarEmpleado";
             this.btnAgregarEmpleado.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.btnAgregarEmpleado.OnHovercolor = System.Drawing.Color.DarkSeaGreen;
@@ -210,7 +212,7 @@ namespace CapaPresentacion
             this.btnEjecutarScript.IconVisible = true;
             this.btnEjecutarScript.IconZoom = 60D;
             this.btnEjecutarScript.IsTab = false;
-            this.btnEjecutarScript.Location = new System.Drawing.Point(160, 200);
+            this.btnEjecutarScript.Location = new System.Drawing.Point(671, 290);
             this.btnEjecutarScript.Name = "btnEjecutarScript";
             this.btnEjecutarScript.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
             this.btnEjecutarScript.OnHovercolor = System.Drawing.Color.RosyBrown;
@@ -229,7 +231,7 @@ namespace CapaPresentacion
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(523, 272);
+            this.ClientSize = new System.Drawing.Size(882, 369);
             this.Controls.Add(this.btnEjecutarScript);
             this.Controls.Add(this.txtnroRol);
             this.Controls.Add(this.txtnrEMPLEADO);

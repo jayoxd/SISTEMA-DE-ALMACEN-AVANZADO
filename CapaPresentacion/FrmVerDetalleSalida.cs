@@ -330,6 +330,8 @@ namespace CapaPresentacion
                         {
                             workbook.SaveAs(saveFileDialog.FileName);
                             MessageBox.Show("Reporte exportado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Abrir el archivo Excel automáticamente
+                            System.Diagnostics.Process.Start(saveFileDialog.FileName);
                         }
                     }
                 }

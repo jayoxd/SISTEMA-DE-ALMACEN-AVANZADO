@@ -188,6 +188,51 @@
 
                     CargarIndicadores();
                 }
+
+                // Verificar si se hizo clic en la columna "IMAGEN"
+                else if (TablaPRODUCTOS.Columns[e.ColumnIndex].Name == "IMAGEN")
+                {
+                    string codigoProducto = TablaPRODUCTOS.Rows[e.RowIndex].Cells["CodigoProducto"].Value.ToString();
+
+                    // Contar las imágenes del producto
+                    int cantidadImagenes = objNegocio.ContarImagenesProducto(codigoProducto);
+
+                    if (cantidadImagenes == 0)
+                    {
+                        // Si no tiene imágenes, mostrar un mensaje y abrir el formulario en modo inserción
+                        MessageBox.Show("El producto no tiene imágenes registradas.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        // Crear una instancia del formulario en modo inserción
+                        CargaImagen frm = new CargaImagen
+                        {
+                            Update = false // Indica que es para agregar nuevas imágenes
+                        };
+                        frm.codigopr.Text = codigoProducto; // Pasar el código del producto al formulario
+                        frm.precioventa.Text= TablaPRODUCTOS.Rows[e.RowIndex].Cells["BASICO"].Value.ToString();
+                        frm.descripcion.Text = TablaPRODUCTOS.Rows[e.RowIndex].Cells["DescripcionProducto"].Value.ToString();
+                        frm.stock.Text = TablaPRODUCTOS.Rows[e.RowIndex].Cells["StockActual"].Value.ToString();
+
+                        frm.ShowDialog();
+                    }
+                    else
+                    {
+                        // Si tiene imágenes, abrir el formulario en modo edición
+                        CargaImagen frm = new CargaImagen
+                        {
+                            Update = true // Indica que es para modificar imágenes existentes
+                        };
+                        frm.codigopr.Text = codigoProducto; // Pasar el código del producto al formulario
+                        frm.precioventa.Text = TablaPRODUCTOS.Rows[e.RowIndex].Cells["BASICO"].Value.ToString();
+                        frm.descripcion.Text = TablaPRODUCTOS.Rows[e.RowIndex].Cells["DescripcionProducto"].Value.ToString();
+                        frm.stock.Text = TablaPRODUCTOS.Rows[e.RowIndex].Cells["StockActual"].Value.ToString();
+                        frm.ShowDialog();
+                    }
+                }
+
+
+
+
+
             }
         }
 
@@ -382,6 +427,9 @@
 
             if (TablaPRODUCTOS.Columns.Contains("ELIMINAR"))
                 TablaPRODUCTOS.Columns["ELIMINAR"].DisplayIndex = TablaPRODUCTOS.Columns.Count - 1;
+
+            if (TablaPRODUCTOS.Columns.Contains("imagen"))
+                TablaPRODUCTOS.Columns["imagen"].DisplayIndex = TablaPRODUCTOS.Columns.Count -16 ;
         }
 
 
@@ -468,7 +516,7 @@
                 var worksheet = workbook.Worksheets.Add("Productos");
 
                 // Eliminar las columnas "EDITAR" y "ELIMINAR" si existen
-                List<string> columnasExcluidas = new List<string> { "EDITAR", "ELIMINAR" };
+                List<string> columnasExcluidas = new List<string> { "EDITAR", "ELIMINAR", "IMAGEN" };
                 List<int> columnasAExcluir = new List<int>();
 
                 for (int i = 0; i < dataGridView.Columns.Count; i++)
@@ -546,6 +594,8 @@
                         // Llamar al método para exportar y pasar la ruta seleccionada
                         ExportarExcelClosedXML(TablaPRODUCTOS, saveFileDialog.FileName);
                         MessageBox.Show($"Reporte generado exitosamente: {saveFileDialog.FileName}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Abrir el archivo Excel automáticamente
+                        System.Diagnostics.Process.Start(saveFileDialog.FileName);
                     }
                 }
             }

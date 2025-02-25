@@ -16,6 +16,7 @@ namespace CapaNegocio
     {
         // instancia de la capa de datos
         private readonly D_EntradaProductos objDatos = new D_EntradaProductos();
+        string rutaCarpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScriptLanmei", "RegistrosSQL");
 
         // método para listar entradas
         public DataTable ListarEntradas()
@@ -90,7 +91,6 @@ namespace CapaNegocio
         }
 
 
-        private string rutaCarpeta = @"C:\RegistrosSQL"; // Carpeta donde se guardarán los archivos
 
 
 

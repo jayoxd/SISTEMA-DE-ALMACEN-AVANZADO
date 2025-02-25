@@ -74,7 +74,7 @@ namespace CapaNegocio
             return objDatos.VerificarEmailExistente(email, idEmpleado);
         }
 
-        private string rutaCarpeta = @"C:\RegistrosSQL"; // Carpeta donde se guardarán los archivos
+        string rutaCarpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScriptLanmei", "RegistrosSQL");
 
         public string GenerarScriptInsertar(E_Usuario usuario)
         {

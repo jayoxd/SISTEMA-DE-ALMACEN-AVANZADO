@@ -47,19 +47,15 @@ namespace CapaPresentacion
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtdireccionx.Text))
-            {
-                MessageBox.Show("El campo Dirección es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txttelefono.Text))
-            {
-                MessageBox.Show("El campo Teléfono es obligatorio.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
            
+            if (txtdniruc.Text.Length != 8)
+            {
+                MessageBox.Show("El DNI/RUC debe tener almenos minimo 8 caracteres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+
             // Crear entidad cliente
             E_proveedores proveedor = new E_proveedores
             {

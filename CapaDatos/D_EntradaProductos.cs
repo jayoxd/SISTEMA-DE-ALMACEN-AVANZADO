@@ -14,7 +14,8 @@ namespace CapaDatos
 {
     public class D_EntradaProductos
     {
-        private readonly SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
+        private readonly SqlConnection conexion = new SqlConnection(ConexionManager.ConnectionString);
+
 
         // método para listar todas las entradas
         public DataTable ListarEntradas()
@@ -155,6 +156,7 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("@UserEdit", entrada.UserUpdate);         // Usuario que edita
             cmd.Parameters.AddWithValue("@FechaHoraSys", DateTime.Now);        // Fecha y hora actual (del sistema)
             cmd.Parameters.AddWithValue("@Fecha", entrada.Fecha);              // Fecha proporcionada por el usuario
+            cmd.Parameters.AddWithValue("@observacion", entrada.observacion);
 
             cmd.Parameters.AddWithValue("@Detalles", entrada.Detalles); // Tabla de detalles
 
@@ -179,6 +181,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Nro_Comprobante", entrada.NroComprobante);
                     cmd.Parameters.AddWithValue("@UserCreate", entrada.UserCreate);
                     cmd.Parameters.AddWithValue("@FechaHoraSys", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@observacion", entrada.observacion);
                     cmd.Parameters.AddWithValue("@Fecha", entrada.Fecha);
                     cmd.Parameters.AddWithValue("@Detalles", entrada.Detalles);
 
@@ -227,7 +230,6 @@ namespace CapaDatos
         public DataTable BuscarPoEntradanrodoc(string valor)
         {
             DataTable table = new DataTable();
-            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString))
             {
                 try
                 {

@@ -20,13 +20,16 @@ namespace CapaPresentacion
         N_Productoss negocio = new N_Productoss();
 
         public  bool Update = false;
-         
+        public bool imagen = false;
 
         public FrmAgregarProducto()
         {
             InitializeComponent();
             ConfigurarEstadoComboBox();
             txtStocP.KeyPress += txtStocP_KeyPress;
+            txbPrecioAnt.KeyPress += txbPrecioAnt_KeyPress;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
+
             txtStocP.Leave += txtStocP_Leave;
 
             txtPrecio.KeyPress += txtPrecio_KeyPress;
@@ -43,14 +46,16 @@ namespace CapaPresentacion
                 // Deshabilitar los campos que no se deben editar
                 txtPrecio.Enabled = false;
                 txtCodigox.Enabled = false;
+                txbPrecioAnt.Enabled = false;
                 txtStocP.Enabled = false;
             }
             else
             {
                 // Si es un nuevo registro, permitir la edición
-                txtPrecio.Enabled = true;
+                txtPrecio.Enabled = false;
                 txtCodigox.Enabled = true;
-                txtStocP.Enabled = true;
+                txbPrecioAnt.Enabled = false;
+                txtStocP.Enabled = false;
             }
         }
 
@@ -70,12 +75,24 @@ namespace CapaPresentacion
 
         private void btnAgregarProductosx_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 // Validar que todos los campos obligatorios estén completos
                 if (string.IsNullOrEmpty(txtCodigox.Text) ||
+                string.IsNullOrEmpty(txtNombreProducto.Text) ||
+                string.IsNullOrEmpty(categoria.Text) ||
+                string.IsNullOrEmpty(cmbestado.Text))
+    
+                {
+                    MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                decimal basico = 0, saga = 0, agora = 0, ripley = 0, mayorista3x5 = 0, mayoristaXcaja = 0;
+                if (imagen == false)
+                {
+
+                    // Validar que todos los campos obligatorios estén completos
+                    if (string.IsNullOrEmpty(txtCodigox.Text) ||
                     string.IsNullOrEmpty(txtNombreProducto.Text) ||
                     string.IsNullOrEmpty(categoria.Text) ||
                     string.IsNullOrEmpty(cmbestado.Text) ||
@@ -84,24 +101,36 @@ namespace CapaPresentacion
                     string.IsNullOrEmpty(txbagora.Text) ||
                     string.IsNullOrEmpty(txbRipley.Text) ||
                     string.IsNullOrEmpty(txbMayorista3x5.Text) ||
-                    string.IsNullOrEmpty(txbmayoristaxcaja.Text)||
-                    string.IsNullOrEmpty(txbPrecioAnt.Text)) 
+                    string.IsNullOrEmpty(txbmayoristaxcaja.Text))
+                    {
+                        MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Validar que los precios sean valores decimales válidos
+                    if (!decimal.TryParse(txbbasico.Text, out basico) ||
+                        !decimal.TryParse(txbSaga.Text, out saga) ||
+                        !decimal.TryParse(txbagora.Text, out agora) ||
+                        !decimal.TryParse(txbRipley.Text, out ripley) ||
+                        !decimal.TryParse(txbMayorista3x5.Text, out mayorista3x5) ||
+                        !decimal.TryParse(txbmayoristaxcaja.Text, out mayoristaXcaja))
+
+                    {
+                        MessageBox.Show("Por favor, ingrese valores válidos para los precios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                // Validar si el código del producto ya existe (solo en inserción)
+                if (Update == false) // Inserción
                 {
-                    MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    if (negocio.VerificarCodigoProducto(txtCodigox.Text))
+                    {
+                        MessageBox.Show("El código del producto ya existe. Por favor, ingrese un código único.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
 
-                // Validar que los precios sean valores decimales válidos
-                if (!decimal.TryParse(txbbasico.Text, out decimal basico) ||
-                    !decimal.TryParse(txbSaga.Text, out decimal saga) ||
-                    !decimal.TryParse(txbagora.Text, out decimal agora) ||
-                    !decimal.TryParse(txbRipley.Text, out decimal ripley) ||
-                    !decimal.TryParse(txbMayorista3x5.Text, out decimal mayorista3x5) ||
-                    !decimal.TryParse(txbmayoristaxcaja.Text, out decimal mayoristaXcaja))
-                {
-                    MessageBox.Show("Por favor, ingrese valores válidos para los precios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+
 
                 // Configurar entidad para el producto
                 entidades.CodigoProducto = txtCodigox.Text;
@@ -119,11 +148,30 @@ namespace CapaPresentacion
 
                 if (Update == false) // Inserción
                 {
+
                     // Llamar al método para insertar el producto
                     negocio.insertandoproductos(entidades);
                     negocio.GenerarScriptInsertar(entidades);
 
                     MessageBox.Show("Producto y precios agregados correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Cerrar el formulario después de guardar
+                    Close();
+                   
+                    if (imagen == false)
+                    {
+                        // Crear una instancia del formulario FrmAgregarProducto
+                        CargaImagen frm = new CargaImagen
+                        {
+                            Update = false // Indica que es para agregar un nuevo producto
+                        };
+
+                        frm.codigopr.Text = txtCodigox.Text;
+                        frm.precioventa.Text = txbbasico.Text;
+                        frm.descripcion.Text = txtNombreProducto.Text;
+                        frm.stock.Text = txtStocP.Text;
+                        frm.ShowDialog();
+                    }
+
                 }
                 else // Actualización
                 {
@@ -136,16 +184,11 @@ namespace CapaPresentacion
 
                     MessageBox.Show("Producto y precios actualizados correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                // Cerrar el formulario después de guardar
-                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
 
@@ -210,6 +253,24 @@ namespace CapaPresentacion
         private void pictureBox4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txbPrecioAnt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y teclas de control (como Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Bloquear la tecla
+            }
+        }
+
+        private void txtPrecio_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y teclas de control (como Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Bloquear la tecla
+            }
         }
     }
 }

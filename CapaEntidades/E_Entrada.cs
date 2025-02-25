@@ -27,6 +27,7 @@ namespace CapaEntidades
         private string _Lote;
         private string _UserCreate;
         private string _UserUpdate;
+        private String _observacion;
 
         public string UserCreate { get => _UserCreate; set => _UserCreate = value; }
         public string UserUpdate { get => _UserUpdate; set => _UserUpdate = value; }
@@ -44,6 +45,8 @@ namespace CapaEntidades
         public string Lote { get => _Lote; set => _Lote = value; }
         public string TipoComprobante { get => _tipoComprobante; set => _tipoComprobante = value; }
         public string NroComprobante { get => _nroComprobante; set => _nroComprobante = value; }
+
+        public string observacion { get => _observacion; set => _observacion = value; }
 
 
 

@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConexionManager.cs" />
     <Compile Include="D_Categoria.cs" />
     <Compile Include="D_Salida.cs" />
     <Compile Include="D_Proveedores.cs" />

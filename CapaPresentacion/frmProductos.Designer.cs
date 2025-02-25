@@ -40,8 +40,6 @@ namespace CapaPresentacion
             this.lblEstadoProductos = new System.Windows.Forms.Label();
             this.Btnoinahbilitados = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TablaPRODUCTOS = new System.Windows.Forms.DataGridView();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.txbBuscarProducto = new System.Windows.Forms.TextBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -81,6 +79,9 @@ namespace CapaPresentacion
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.IMAGEN = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPRODUCTOS)).BeginInit();
@@ -220,7 +221,8 @@ namespace CapaPresentacion
             this.TablaPRODUCTOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaPRODUCTOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EDITAR,
-            this.ELIMINAR});
+            this.ELIMINAR,
+            this.IMAGEN});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -239,24 +241,6 @@ namespace CapaPresentacion
             this.TablaPRODUCTOS.Size = new System.Drawing.Size(1250, 434);
             this.TablaPRODUCTOS.TabIndex = 8;
             this.TablaPRODUCTOS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaPRODUCTOS_CellContentClick);
-            // 
-            // EDITAR
-            // 
-            this.EDITAR.FillWeight = 169.5432F;
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::CapaPresentacion.Properties.Resources.EditarProducto;
-            this.EDITAR.MinimumWidth = 11;
-            this.EDITAR.Name = "EDITAR";
-            this.EDITAR.Width = 80;
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.FillWeight = 30.45685F;
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::CapaPresentacion.Properties.Resources.EliminarProducto;
-            this.ELIMINAR.MinimumWidth = 11;
-            this.ELIMINAR.Name = "ELIMINAR";
-            this.ELIMINAR.Width = 80;
             // 
             // txbBuscarProducto
             // 
@@ -727,6 +711,30 @@ namespace CapaPresentacion
             this.label8.TabIndex = 4;
             this.label8.Text = "PRODUCTO CON MÁS ENTRADAS";
             // 
+            // EDITAR
+            // 
+            this.EDITAR.FillWeight = 169.5432F;
+            this.EDITAR.HeaderText = "EDITAR";
+            this.EDITAR.Image = global::CapaPresentacion.Properties.Resources.EditarProducto;
+            this.EDITAR.MinimumWidth = 11;
+            this.EDITAR.Name = "EDITAR";
+            this.EDITAR.Width = 80;
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.FillWeight = 30.45685F;
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::CapaPresentacion.Properties.Resources.EliminarProducto;
+            this.ELIMINAR.MinimumWidth = 11;
+            this.ELIMINAR.Name = "ELIMINAR";
+            this.ELIMINAR.Width = 80;
+            // 
+            // IMAGEN
+            // 
+            this.IMAGEN.HeaderText = "Imagen";
+            this.IMAGEN.Image = ((System.Drawing.Image)(resources.GetObject("IMAGEN.Image")));
+            this.IMAGEN.Name = "IMAGEN";
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -806,8 +814,6 @@ namespace CapaPresentacion
         private Bunifu.Framework.UI.BunifuThinButton2 Btnoinahbilitados;
 
         private System.Windows.Forms.Label lblEstadoProductos;
-        private DataGridViewImageColumn EDITAR;
-        private DataGridViewImageColumn ELIMINAR;
         private Panel panel10;
         private Label lblMasSalidas;
         private PictureBox pictureBox7;
@@ -827,5 +833,8 @@ namespace CapaPresentacion
         private PictureBox pictureBox16;
         private PictureBox pictureBox17;
         private Label label8;
+        private DataGridViewImageColumn EDITAR;
+        private DataGridViewImageColumn ELIMINAR;
+        private DataGridViewImageColumn IMAGEN;
     }
 }

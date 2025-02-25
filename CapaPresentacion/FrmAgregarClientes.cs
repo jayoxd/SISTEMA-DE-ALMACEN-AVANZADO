@@ -173,10 +173,15 @@ namespace CapaPresentacion
             }
 
             // Validar longitud máxima para DNI (8 dígitos)
-            if (txtdniruc.Text.Length >= 8 && !char.IsControl(e.KeyChar))
+            if (txtdniruc.Text.Length >=  15 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // Cancela el evento si la longitud máxima se excede
             }
+        }
+
+        private void txtdniruc_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

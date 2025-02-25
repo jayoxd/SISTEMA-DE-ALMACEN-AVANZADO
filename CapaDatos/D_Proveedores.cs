@@ -12,7 +12,7 @@ namespace CapaDatos
     public class D_proveedores
     {
 
-        private readonly SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
+        private readonly SqlConnection conexion = new SqlConnection(ConexionManager.ConnectionString);
 
         // Método para listar proveedores
         public DataTable ListarProveedores()

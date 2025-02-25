@@ -316,7 +316,7 @@ namespace CapaPresentacion
             origencliente.Text = F_Variables.OrigenCliente;
 
             // Verifica que F_Variables esté actualizando correctamente
-            MessageBox.Show($"OrigenCliente: {F_Variables.OrigenCliente}");
+           // MessageBox.Show($"OrigenCliente: {F_Variables.OrigenCliente}");
 
             // Asignamos la lógica de tipo de venta según el origen del cliente
             if (F_Variables.OrigenCliente == "INTERNO")
@@ -341,7 +341,7 @@ namespace CapaPresentacion
             }
 
             // Verifica que el valor haya sido asignado correctamente
-            MessageBox.Show($"Después de asignar el valor: {tipoventa.Text}");
+           // MessageBox.Show($"Después de asignar el valor: {tipoventa.Text}");
         }
 
 
@@ -650,13 +650,13 @@ namespace CapaPresentacion
                     return;
                 }
 
-                if (txbfechaDespacho.Value < DateTime.Now.AddDays(-1))
+                if (txbfechaDespacho.Value < txbFecha.Value)
                 {
-                    MessageBox.Show("La Fecha de Despacho no puede ser anterior al día de ayer.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La Fecha de Despacho no puede ser anterior a la fecha indicada en el campo Fecha.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(txbNumCom.Text) || !txbNumCom.Text.All(char.IsDigit))
+                if (string.IsNullOrWhiteSpace(txbNumCom.Text))
                 {
                     MessageBox.Show("Debe ingresar un número de comprobante válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -757,12 +757,7 @@ namespace CapaPresentacion
 
         private void txbNumCom_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir solo números y teclas de control (como retroceso)
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten números en este campo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+           
         }
         private void tipoDecambio_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -13,10 +13,10 @@ namespace CapaDatos
      public class D_Usuario
     {
 
-        SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
+        private readonly SqlConnection conexion = new SqlConnection(ConexionManager.ConnectionString);
 
         //metodo encargado de buscar y listar los  objetos como los atributos en la entidad cliente
-       
+
 
         public DataTable Login(string email, string clave)
         {

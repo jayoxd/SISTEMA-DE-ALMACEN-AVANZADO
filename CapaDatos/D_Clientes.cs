@@ -12,8 +12,8 @@ namespace CapaDatos
 {
     public class D_Clientes
     {
+        private readonly SqlConnection conexion = new SqlConnection(ConexionManager.ConnectionString);
 
-        private readonly SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
 
         // Método para listar clientes
         public DataTable ListarClientes()

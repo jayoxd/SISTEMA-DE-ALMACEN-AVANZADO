@@ -15,6 +15,7 @@ namespace CapaNegocio
     {
         D_Productoss objDatos = new D_Productoss();
         E_productoss entidades = new E_productoss();
+        string rutaCarpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScriptLanmei", "RegistrosSQL");
 
         public DataTable listandoProductos(bool? estado = null)
         {
@@ -113,7 +114,6 @@ namespace CapaNegocio
             return objDatos.ObtenerProductoConMasMovimientos(2); // Opción 2: Producto con más entradas
         }
 
-        private string rutaCarpeta = @"C:\RegistrosSQL"; // Carpeta donde se guardarán los archivos
 
         public string GenerarScriptInsertar(E_productoss producto)
         {
@@ -201,6 +201,54 @@ namespace CapaNegocio
 
             GuardarScriptEnArchivo(script, estado ? "HabilitarProducto" : "OcultarProducto");
             return script;
+        }
+
+
+        public int InsertarImagen(string codigoProducto, string rutaImagen, int orden)
+        {
+            try
+            {
+                // Llamar al método de la capa de datos
+                return objDatos.InsertarImagenProducto(codigoProducto, rutaImagen, orden);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la capa de negocio: " + ex.Message);
+            }
+        }
+        
+
+        public DataTable obtenerImgproducto(string codigoProducto)
+        {
+            return new D_Productoss().obtenerimgsxproducto(codigoProducto);
+        }
+
+        public void EditarPRODUCTOimg(String productoId, DataTable imagenesProducto)
+        {
+            try
+            {
+                objDatos.EditarProductosIMG(productoId,imagenesProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar imagenes: " + ex.Message);
+            }
+        }
+        public int ContarImagenesProducto(string codigoProducto)
+        {
+            try
+            {
+                return objDatos.ContarImagenesProducto(codigoProducto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la capa de negocio: " + ex.Message);
+            }
+        }
+
+        public bool VerificarCodigoProducto(string codigoProducto)
+        {
+            return objDatos.VerificarCodigoProducto(codigoProducto);
         }
 
     }

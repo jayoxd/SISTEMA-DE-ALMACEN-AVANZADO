@@ -12,9 +12,9 @@ namespace CapaNegocio
 {
     public class N_Clientes
     {
-        private string rutaCarpeta = @"C:\RegistrosSQL"; // Ruta donde se guardarán los archivos
 
         D_Clientes objDatos = new D_Clientes();
+        string rutaCarpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScriptLanmei", "RegistrosSQL");
 
         public DataTable listandoClientes()
         {
@@ -54,7 +54,7 @@ namespace CapaNegocio
             GuardarScriptEnArchivo(script, "InsertarCliente");
             return script;
         }
-
+            
         public string GenerarScriptActualizar(E_Clientes cliente)
         {
             string script = $@"

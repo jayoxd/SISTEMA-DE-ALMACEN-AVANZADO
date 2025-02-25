@@ -123,7 +123,7 @@ namespace CapaPresentacion
             txbBuscarCliente.Clear();
             razonsocial.Text = "---------------";
             ruc.Text = "---------------";
-
+            observaciontxb.Clear();
             // Mantén el contenido del ComboBox
             cmbTipCompr.SelectedIndex = 0; // Selecciona la opción predeterminada en lugar de limpiar
             nrodcomuento.Clear();
@@ -485,14 +485,23 @@ namespace CapaPresentacion
                 {
                     MessageBox.Show("Debe seleccionar un tipo de comprobante.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
+                
                 }
-
-                // Validar el número de comprobante
-                if (string.IsNullOrWhiteSpace(txbNumCom.Text) || !txbNumCom.Text.All(char.IsDigit))
+                if(string.IsNullOrWhiteSpace(observaciontxb.Text))
                 {
-                    MessageBox.Show("Debe ingresar un número de comprobante válido (solo números).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Debe ingresar un número de comprobante válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+
+                // Validar el número de comprobante
+                if (string.IsNullOrWhiteSpace(txbNumCom.Text))
+                {
+                    MessageBox.Show("Debe ingresar un número de comprobante válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
 
                 // Validar los datos en cada fila de la tabla de detalles
                 foreach (DataRow fila in DtDetalle.Rows)
@@ -526,6 +535,7 @@ namespace CapaPresentacion
                     entidades.TipoComprobante = tipoComprobanteSeleccionado;
                     entidades.TipoCambio = tipoCambio;
                     entidades.NroComprobante = txbNumCom.Text.Trim();
+                    entidades.observacion = observaciontxb.Text;
                     entidades.Detalles = DtDetalle;
                     entidades.UserCreate = Idusuario.ToString();
                     DateTime fechaEntrada = txbFecha.Value;  // Obtiene el valor del DateTimePicker
@@ -535,7 +545,7 @@ namespace CapaPresentacion
 
                     N_Entrada objDatos = new N_Entrada();
 
-                    // Llamada a la capa de negocio para editar la entrada
+                    // Llamada a la capa de negocio para insertar la entrada
                     string nroDocumentoGenerado = objDatos.InsertarEntrada(entidades);
 
                     // 🔹 Asignarlo a la entidad
@@ -560,6 +570,7 @@ namespace CapaPresentacion
                     entidades.TipoComprobante = tipoComprobanteSeleccionado;
                     entidades.TipoCambio = tipoCambio;
                     entidades.NroComprobante = txbNumCom.Text.Trim();
+                    entidades.observacion = observaciontxb.Text;
                     entidades.Detalles = DtDetalle;
                     DateTime fechaEntrada = txbFecha.Value;  // Obtiene el valor del DateTimePicker
                     entidades.Fecha = fechaEntrada;
@@ -599,12 +610,7 @@ namespace CapaPresentacion
         }
         private void txbNumCom_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir solo números y teclas de control (como retroceso)
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten números en este campo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+           
         }
         private void tipoDecambio_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -809,6 +815,8 @@ namespace CapaPresentacion
                         cmbTipCompr.SelectedItem = row["Tipo_Comprobante"].ToString(); // Tipo de comprobante
                         txbNumCom.Text = row["Nro_Comprobante"].ToString(); // Número de comprobante
                         tipoDecambio.Text = row["TipoCambio"].ToString(); // Tipo de cambio
+                        observaciontxb.Text = row["observacion"].ToString(); // Tipo de cambio
+
                     }
 
                     // Tabla 1: Detalles de la entrada
@@ -867,6 +875,19 @@ namespace CapaPresentacion
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario FrmAgregarProducto
+            FrmAgregarProducto frm = new FrmAgregarProducto
+            { 
+                imagen = true,
+                Update = false // Indica que es para agregar un nuevo producto
+            };
+
+            // Mostrar el formulario
+            frm.ShowDialog();
         }
     }
 }

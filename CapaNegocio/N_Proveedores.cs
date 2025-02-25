@@ -12,7 +12,7 @@ namespace CapaNegocio
 {
    public class N_Proveedores
     {
-        private string rutaCarpeta = @"C:\RegistrosSQL"; // Carpeta donde se guardarán los archivos
+        string rutaCarpeta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ScriptLanmei", "RegistrosSQL");
 
         D_proveedores objDatos = new D_proveedores();
         E_proveedores entidades = new E_proveedores();

@@ -14,7 +14,7 @@ namespace CapaDatos
 {
     public class D_salida
     {
-        private readonly SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
+        private readonly SqlConnection conexion = new SqlConnection(ConexionManager.ConnectionString);
 
         // método para listar todas las entradas
         public DataTable ListaSalida()
@@ -276,7 +276,6 @@ namespace CapaDatos
         public DataTable BuscarPorSalidaNroDoc(string valor)
         {
             DataTable table = new DataTable();
-            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString))
             {
                 try
                 {

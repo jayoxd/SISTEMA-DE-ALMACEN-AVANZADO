@@ -29,8 +29,8 @@ namespace CapaPresentacion
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEntrada));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -105,6 +105,10 @@ namespace CapaPresentacion
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.btnProductos = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.observaciontxb = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -137,6 +141,7 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -555,6 +560,10 @@ namespace CapaPresentacion
             // 
             this.panel9.BackgroundImage = global::CapaPresentacion.Properties.Resources.SombraPanelProductos;
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel9.Controls.Add(this.observaciontxb);
+            this.panel9.Controls.Add(this.pictureBox5);
+            this.panel9.Controls.Add(this.label15);
+            this.panel9.Controls.Add(this.btnProductos);
             this.panel9.Controls.Add(this.txbFecha);
             this.panel9.Controls.Add(this.nrodcomuento);
             this.panel9.Controls.Add(this.editarEntrada);
@@ -814,7 +823,7 @@ namespace CapaPresentacion
             this.btnGuardarServicio.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnGuardarServicio.IdleForecolor = System.Drawing.Color.White;
             this.btnGuardarServicio.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
-            this.btnGuardarServicio.Location = new System.Drawing.Point(1189, 593);
+            this.btnGuardarServicio.Location = new System.Drawing.Point(1198, 603);
             this.btnGuardarServicio.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnGuardarServicio.Name = "btnGuardarServicio";
             this.btnGuardarServicio.Size = new System.Drawing.Size(243, 44);
@@ -870,15 +879,15 @@ namespace CapaPresentacion
             this.dgvDetalle.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetalle.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetalle.Location = new System.Drawing.Point(28, 405);
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -897,7 +906,7 @@ namespace CapaPresentacion
             this.LBLtotalprod.BackColor = System.Drawing.Color.Transparent;
             this.LBLtotalprod.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLtotalprod.ForeColor = System.Drawing.Color.Gray;
-            this.LBLtotalprod.Location = new System.Drawing.Point(1421, 494);
+            this.LBLtotalprod.Location = new System.Drawing.Point(1426, 566);
             this.LBLtotalprod.Name = "LBLtotalprod";
             this.LBLtotalprod.Size = new System.Drawing.Size(36, 18);
             this.LBLtotalprod.TabIndex = 175;
@@ -911,7 +920,7 @@ namespace CapaPresentacion
             this.lblSubTotal.BackColor = System.Drawing.Color.Transparent;
             this.lblSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblSubTotal.Location = new System.Drawing.Point(1093, 494);
+            this.lblSubTotal.Location = new System.Drawing.Point(1098, 566);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(208, 18);
             this.lblSubTotal.TabIndex = 172;
@@ -921,7 +930,7 @@ namespace CapaPresentacion
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox13.Image = global::CapaPresentacion.Properties.Resources.linea_negra;
-            this.pictureBox13.Location = new System.Drawing.Point(1092, 429);
+            this.pictureBox13.Location = new System.Drawing.Point(1094, 533);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(405, 20);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1117,6 +1126,65 @@ namespace CapaPresentacion
             this.pictureBox12.TabIndex = 184;
             this.pictureBox12.TabStop = false;
             // 
+            // btnProductos
+            // 
+            this.btnProductos.ActiveBorderThickness = 1;
+            this.btnProductos.ActiveCornerRadius = 20;
+            this.btnProductos.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.btnProductos.ActiveForecolor = System.Drawing.Color.White;
+            this.btnProductos.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.btnProductos.BackColor = System.Drawing.Color.White;
+            this.btnProductos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnProductos.BackgroundImage")));
+            this.btnProductos.ButtonText = "Registrar Producto";
+            this.btnProductos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btnProductos.ForeColor = System.Drawing.Color.White;
+            this.btnProductos.IdleBorderThickness = 1;
+            this.btnProductos.IdleCornerRadius = 20;
+            this.btnProductos.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.btnProductos.IdleForecolor = System.Drawing.Color.White;
+            this.btnProductos.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(76)))), ((int)(((byte)(94)))));
+            this.btnProductos.Location = new System.Drawing.Point(735, 296);
+            this.btnProductos.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(243, 49);
+            this.btnProductos.TabIndex = 200;
+            this.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
+            // 
+            // observaciontxb
+            // 
+            this.observaciontxb.BackColor = System.Drawing.Color.White;
+            this.observaciontxb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.observaciontxb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.observaciontxb.ForeColor = System.Drawing.Color.Gray;
+            this.observaciontxb.Location = new System.Drawing.Point(1105, 456);
+            this.observaciontxb.Multiline = true;
+            this.observaciontxb.Name = "observaciontxb";
+            this.observaciontxb.Size = new System.Drawing.Size(370, 40);
+            this.observaciontxb.TabIndex = 215;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::CapaPresentacion.Properties.Resources.CajaDescripcion;
+            this.pictureBox5.Location = new System.Drawing.Point(1095, 446);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(391, 65);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 214;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(1100, 421);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(116, 18);
+            this.label15.TabIndex = 213;
+            this.label15.Text = "OBSERVACIÓN";
+            // 
             // FrmEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1167,6 +1235,7 @@ namespace CapaPresentacion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1247,5 +1316,9 @@ namespace CapaPresentacion
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblclient;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnProductos;
+        public System.Windows.Forms.TextBox observaciontxb;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label15;
     }
 }

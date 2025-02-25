@@ -1,26 +1,21 @@
-﻿using System;
+﻿using CapaEntidades;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Configuration;
-using CapaEntidades;
 using System.Data;
+using System.Data.SqlClient;
 namespace CapaDatos
 {
     public class D_Productoss
     {
-        SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString);
+        private readonly SqlConnection conexion = new SqlConnection(ConexionManager.ConnectionString);
 
         public DataTable listaProductos(bool? estado = null)
         {
             DataTable table = new DataTable();
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_ConsultarProductos", connection))
+                    using (SqlCommand cmd = new SqlCommand("sp_ConsultarProductos", conexion))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@CodigoProducto", DBNull.Value);
@@ -31,7 +26,7 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@StockMin", DBNull.Value);
                         cmd.Parameters.AddWithValue("@Estado", (object)estado ?? DBNull.Value);
 
-                        connection.Open();
+                        conexion.Open();
                         using (SqlDataReader leerfilas = cmd.ExecuteReader())
                         {
                             table.Load(leerfilas);
@@ -97,7 +92,7 @@ namespace CapaDatos
             conexion.Open();
 
             cmd.Parameters.AddWithValue("@Categoria", productos.Buscar_producto);
-     
+
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(tabla);
@@ -108,7 +103,6 @@ namespace CapaDatos
         public DataTable BuscarProductoPorCodigoODescripcion(string valor, bool activo)
         {
             DataTable table = new DataTable();
-            using (SqlConnection conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString))
             {
                 try
                 {
@@ -211,18 +205,37 @@ namespace CapaDatos
             }
         }
 
-     
+
         public bool VerificarCodigoProducto(string codigoProducto)
         {
-            {
-                SqlCommand cmd = new SqlCommand("sp_VerificarCodigoProducto", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoProducto", codigoProducto);
+            bool existe = false;
 
-                conexion.Open();
-                int existe = Convert.ToInt32(cmd.ExecuteScalar());
-                return existe == 1; // Devuelve true si existe
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_VerificarCodigoProducto", conexion))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CodigoProducto", codigoProducto);
+
+                    conexion.Open();
+                    int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                    existe = (resultado == 1); // Devuelve true si existe
+                }
             }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (loggear, mostrar mensaje, etc.)
+                throw new Exception("Error al verificar el código del producto", ex);
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close(); // Cierra la conexión si está abierta
+                }
+            }
+
+            return existe;
         }
 
         public void EditarProductos(E_productoss productos)
@@ -398,6 +411,37 @@ namespace CapaDatos
             }
             return total;
         }
+
+
+        public int ContarImagenesProducto(string codigoProducto)
+        {
+            int total = 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM ImagenesProducto WHERE CodigoProducto = @CodigoProducto", conexion);
+                cmd.Parameters.AddWithValue("@CodigoProducto", codigoProducto);
+                conexion.Open();
+                total = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al contar las imágenes del producto: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return total;
+        }
+
+
+
+
+
+
+
+
+
         public DataTable ObtenerProductoConMasMovimientos(int opcion)
         {
             try
@@ -425,7 +469,7 @@ namespace CapaDatos
                     conexion.Close();
                 }
             }
-        
+
         }
         public int ObtenerStockActual(string codigoProducto)
         {
@@ -438,10 +482,9 @@ namespace CapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@CodigoProducto", codigoProducto);
 
-                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conectar"].ConnectionString))
                     {
-                        conn.Open(); // Abre la conexión
-                        cmd.Connection = conn;
+                        conexion.Open(); // Abre la conexión
+                        cmd.Connection = conexion;
 
                         // Ejecutar el comando y asignar el valor devuelto a stockActual
                         var result = cmd.ExecuteScalar();
@@ -466,6 +509,75 @@ namespace CapaDatos
 
             return stockActual;
         }
+
+
+
+        public int InsertarImagenProducto(string codigoProducto, string rutaImagen, int orden)
+        {
+            int imagenID = 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("InsertarImagenProducto", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Parámetros del SP
+                cmd.Parameters.AddWithValue("@CodigoProducto", codigoProducto);
+                cmd.Parameters.AddWithValue("@RutaImagen", rutaImagen);
+                cmd.Parameters.AddWithValue("@Orden", orden);
+
+                conexion.Open();
+                imagenID = Convert.ToInt32(cmd.ExecuteScalar()); // Retorna el ImagenID generado
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar la imagen: " + ex.Message);
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+            return imagenID;
+        }
+
+
+        public DataTable obtenerimgsxproducto(string codigoProducto)
+        {
+            {
+                using (SqlCommand comando = new SqlCommand("ObtenerImagenesProducto", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@CodigoProducto", (object)codigoProducto ?? DBNull.Value);
+
+                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                    DataTable dtReporte = new DataTable();
+                    adaptador.Fill(dtReporte);
+
+                    return dtReporte;
+                }
+            }
+        }
+
+
+
+        public void EditarProductosIMG(String productoId, DataTable imagenesProducto)
+        {
+            SqlCommand cmd = new SqlCommand("ActualizarImagenesProducto", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conexion.Open();
+
+            cmd.Parameters.AddWithValue("@ProductoID", productoId); // ID del producto
+            cmd.Parameters.AddWithValue("@ImagenesProducto", imagenesProducto); // Tabla de imágenes
+
+
+
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
 
 
 

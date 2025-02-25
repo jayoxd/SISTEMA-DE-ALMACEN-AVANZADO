@@ -106,6 +106,13 @@ namespace CapaPresentacion
                 tablaReporte.Columns["Fecha"].Width = 110;
                 tablaReporte.Columns["Fecha"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            if (tablaReporte.Columns.Contains("Observacion"))
+            {
+                tablaReporte.Columns["Observacion"].HeaderText = "Observación";
+                tablaReporte.Columns["Observacion"].Width = 110;
+                tablaReporte.Columns["Observacion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
 
             if (tablaReporte.Columns.Contains("ProveedorID"))
             {
